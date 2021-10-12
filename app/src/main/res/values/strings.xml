@@ -2,4 +2,15 @@
     <string name="app_name">WeatherApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="weather_forecast_detail_felt_temperature">Felt</string>
+    <string name="weather_forecast_detail_temperature">Temperature</string>
+
+
+
+
+
+
+    <string name="test_text_app_name">TEST APP NAME</string>
+    <string name="test_text_city_name">TEST CITY NAME</string>
+    <string name="test_text_date_general_time">TEST DATE TIME</string>
 </resources>

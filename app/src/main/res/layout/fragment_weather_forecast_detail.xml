@@ -1,10 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.view.WeatherForecastDetailFragment">
 
+    <ImageView
+        android:id="@+id/textViewWeatherForecastDetailAppLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintEnd_toStartOf="@+id/textViewWeatherForecastDetailAppText"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/weatherForecastDetailCityWeatherGeneralLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewWeatherForecastDetailCityName"
+        app:layout_constraintEnd_toStartOf="@+id/textViewWeatherForecastDetailGeneralDateTime"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastDetailCityName"
+        app:layout_constraintTop_toTopOf="@+id/textViewWeatherForecastDetailCityName"
+        tools:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textViewWeatherForecastDetailCityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/weatherForecastDetailCityWeatherGeneralLogo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWeatherForecastDetailAppLogo"
+        tools:text="@string/test_text_city_name"/>
+
+    <TextView
+        android:id="@+id/textViewWeatherForecastDetailAppText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:textSize="@dimen/large_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewWeatherForecastDetailAppLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastDetailAppLogo"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/test_text_app_name" />
+
+    <TextView
+        android:id="@+id/textViewWeatherForecastDetailGeneralDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/weatherForecastDetailCityWeatherGeneralLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/weatherForecastDetailCityWeatherGeneralLogo"
+        app:layout_constraintTop_toTopOf="@+id/weatherForecastDetailCityWeatherGeneralLogo"
+        tools:text="@string/test_text_date_general_time"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewWeatherForecastDetail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/reycler_height_weather_forecast_detail"
+        android:layout_marginTop="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weatherForecastDetailCityWeatherGeneralLogo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,4 +8,13 @@
     <dimen name="xx_large_margin">125dp</dimen>
     <dimen name="xxx_large_margin">150dp</dimen>
     <dimen name="xxxx_large_margin">205dp</dimen>
+
+    <dimen name="small_text_size">15sp</dimen>
+    <dimen name="medium_text_size">20sp</dimen>
+    <dimen name="large_text_size">25sp</dimen>
+    <dimen name="x_large_text_size">30sp</dimen>
+
+
+    <dimen name="reycler_height_weather_forecast_detail">501dp</dimen>
+
 </resources>
