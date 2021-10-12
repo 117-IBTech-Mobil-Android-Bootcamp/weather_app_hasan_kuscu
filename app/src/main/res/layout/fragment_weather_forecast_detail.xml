@@ -18,7 +18,7 @@
         tools:src="@mipmap/ic_launcher" />
 
     <ImageView
-        android:id="@+id/weatherForecastDetailCityWeatherGeneralLogo"
+        android:id="@+id/imageViewWeatherForecastDetailCityGeneralLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textViewWeatherForecastDetailCityName"
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/medium_margin"
         android:textSize="@dimen/medium_text_size"
-        app:layout_constraintEnd_toStartOf="@+id/weatherForecastDetailCityWeatherGeneralLogo"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewWeatherForecastDetailCityGeneralLogo"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewWeatherForecastDetailAppLogo"
@@ -57,11 +57,11 @@
         android:id="@+id/textViewWeatherForecastDetailGeneralDateTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/weatherForecastDetailCityWeatherGeneralLogo"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewWeatherForecastDetailCityGeneralLogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/weatherForecastDetailCityWeatherGeneralLogo"
-        app:layout_constraintTop_toTopOf="@+id/weatherForecastDetailCityWeatherGeneralLogo"
+        app:layout_constraintStart_toEndOf="@+id/imageViewWeatherForecastDetailCityGeneralLogo"
+        app:layout_constraintTop_toTopOf="@+id/imageViewWeatherForecastDetailCityGeneralLogo"
         tools:text="@string/test_text_date_general_time"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -72,7 +72,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weatherForecastDetailCityWeatherGeneralLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewWeatherForecastDetailCityGeneralLogo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
