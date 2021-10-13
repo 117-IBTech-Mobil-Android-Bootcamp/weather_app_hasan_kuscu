@@ -1,7 +1,6 @@
 package com.pakt_games.weatherapp.ui.model
 
-data class CityHours(
-    val time: String,
+data class CityCurrent(
     val temp_c : Double,
     val temp_f : Double,
     val feelslike_c : Double,
