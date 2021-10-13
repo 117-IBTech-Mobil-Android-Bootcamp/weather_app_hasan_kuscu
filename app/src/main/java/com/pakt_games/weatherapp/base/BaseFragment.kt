@@ -8,8 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import com.pakt_games.weatherapp.utils.showToast
 
-abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding> : Fragment() {
+abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding> : Fragment(), FragmentActions {
 
     abstract val viewModel: VM
     protected lateinit var dataBinding: DB
@@ -26,8 +27,10 @@ abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeLiveData()
+        showToast(shouldCheckInternetConnection().toString())
     }
     abstract fun getLayoutID(): Int
     abstract fun observeLiveData()
     abstract fun injectKoin()
+    override fun shouldCheckInternetConnection() = true
 }
