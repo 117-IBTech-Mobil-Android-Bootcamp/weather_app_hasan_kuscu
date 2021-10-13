@@ -1,6 +1,5 @@
 package com.pakt_games.weatherapp.repository
 
-import com.pakt_games.weatherapp.db.WeatherForecastDAO
 import com.pakt_games.weatherapp.network.WeatherForecastAPI
 import com.pakt_games.weatherapp.network.response.WeatherForecastResponse
 import com.pakt_games.weatherapp.utils.Result
