@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/weather_forecast_graph"
+    app:startDestination="@id/weatherForecastDetailFragment">
+
+    <fragment
+        android:id="@+id/weatherForecastDetailFragment"
+        android:name="com.pakt_games.weatherapp.ui.view.WeatherForecastDetailFragment"
+        android:label="WeatherForecastDetailFragment" />
+</navigation>
