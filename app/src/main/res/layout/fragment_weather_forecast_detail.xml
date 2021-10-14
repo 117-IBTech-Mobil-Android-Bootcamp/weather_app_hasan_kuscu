@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="model"
-            type="com.pakt_games.weatherapp.ui.model.CityCurrent"/>
-    </data>
+<data>
+    <variable
+        name="model"
+        type="com.pakt_games.weatherapp.ui.model.CityCurrent" />
+</data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.view.WeatherForecastDetailFragment">
@@ -25,7 +24,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher" />
 
     <ImageView
         android:id="@+id/imageViewWeatherForecastDetailCityGeneralLogo"
@@ -48,8 +47,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewWeatherForecastDetailAppLogo"
-        tools:text="@string/test_text_city_name"
-        android:text="@{String.valueOf(model.feelslike_f)}"/>
+        tools:text="@string/test_text_city_name"/>
 
     <TextView
         android:id="@+id/textViewWeatherForecastDetailAppText"
@@ -62,7 +60,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastDetailAppLogo"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/test_text_app_name" />
+        tools:text="@string/test_text_app_name"
+        android:text="@{String.valueOf(model.temp_c)}"/>
 
     <TextView
         android:id="@+id/textViewWeatherForecastDetailGeneralDateTime"
@@ -78,8 +77,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewWeatherForecastDetail"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/reycler_height_weather_forecast_detail"
+        android:layout_height="0dp"
         android:layout_marginTop="1dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

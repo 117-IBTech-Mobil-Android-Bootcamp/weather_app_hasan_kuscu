@@ -21,6 +21,7 @@ class WeatherForecastDetailViewModel(private val weatherForecastDetailRepository
             when(remoteResponse){
                 is Result.Success -> {
                     onMoviesFetched.value = WeatherForecastDetailViewStateModel(remoteResponse.data!!)
+
                 }
                 is Result.Error -> onError.value = Unit
             }

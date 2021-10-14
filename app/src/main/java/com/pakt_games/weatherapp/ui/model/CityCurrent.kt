@@ -12,5 +12,4 @@ data class CityCurrent(
     @ColumnInfo(name = "temp_f") val temp_f : Double,
     @ColumnInfo(name = "fellslike_c") val feelslike_c : Double,
     @ColumnInfo(name = "fellslike_f") val feelslike_f : Double,
-    @ColumnInfo(name = "condution") val condution : CityCondution
 )

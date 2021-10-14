@@ -1,7 +1,6 @@
 package com.pakt_games.weatherapp.di
 
 import com.pakt_games.weatherapp.network.WeatherForecastAPI
-import com.pakt_games.weatherapp.utils.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -23,6 +22,7 @@ fun provideHttpClient() : OkHttpClient {
     return httpClient
 }
 fun provideRetrofit(httpClient: OkHttpClient) : Retrofit {
+    val BASE_URL = "https://api.weatherapi.com/v1/"
     return Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())

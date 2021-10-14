@@ -7,7 +7,6 @@ import retrofit2.http.Query
 
 interface WeatherForecastAPI {
 
-    @GET("{city_name}")
-    fun getCities(@Path("city_name") cityName: String) :WeatherForecastResponse
-
+    @GET("forecast.json")
+    suspend fun getTopRatedMovies(@Query("key") apikey : String, @Query("q") cityName : String) : WeatherForecastResponse?
 }
