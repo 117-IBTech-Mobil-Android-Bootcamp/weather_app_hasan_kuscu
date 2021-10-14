@@ -24,7 +24,6 @@ class WeatherForecastDetailRecyclerAdapter(private val cityList: List<CityCurren
     override fun getItemCount() = this.cityList.size
 }
 
-
 class WeatherForecastDetailViewHolder(private val binding: WeatherForecastDetailRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun populate(city: CityCurrent) {
