@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.pakt_games.weatherapp.R
 import com.pakt_games.weatherapp.base.BaseFragment
+import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastSearchBinding
+import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastSearchFragmentViewModel
 
 
-class WeatherForecastSearchFragment :  {
+class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragmentViewModel,FragmentWeatherForecastSearchBinding>() {
 
 
 
