@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/weather_forecast_graph"
-    app:startDestination="@id/weatherForecastDetailFragment">
+    app:startDestination="@id/weatherForecastHomeFragment">
 
     <fragment
         android:id="@+id/weatherForecastDetailFragment"
         android:name="com.pakt_games.weatherapp.ui.view.WeatherForecastDetailFragment"
-        android:label="WeatherForecastDetailFragment" />
+        android:label="WeatherForecastDetailFragment" >
+        <action
+            android:id="@+id/action_weatherForecastDetailFragment_to_weatherForecastHomeFragment"
+            app:destination="@id/weatherForecastHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherForecastHomeFragment"
+        android:name="com.pakt_games.weatherapp.ui.view.WeatherForecastHomeFragment"
+        android:label="fragment_weather_forecast_home"
+        tools:layout="@layout/fragment_weather_forecast_home" >
+        <action
+            android:id="@+id/action_weatherForecastHomeFragment_to_weatherForecastDetailFragment"
+            app:destination="@id/weatherForecastDetailFragment" />
+    </fragment>
 </navigation>
