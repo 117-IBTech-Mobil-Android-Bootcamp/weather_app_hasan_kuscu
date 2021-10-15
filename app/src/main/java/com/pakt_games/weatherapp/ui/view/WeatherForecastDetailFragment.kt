@@ -27,22 +27,14 @@ class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewMode
         }
     }
     override fun observeLiveData() {
-
         viewModel.prepareMovies()
 
         viewModel.onMoviesFetched.observe(this, {
-
             dataBinding.model = it.getList()
             dataBinding.executePendingBindings()
-
-
         })
-
-
         viewModel.onError.observe(this, {
-
             showToast("Bir hata meydana geldi")
-
         })
     }
 
