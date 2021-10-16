@@ -8,6 +8,7 @@ import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastHomeBinding
 import com.pakt_games.weatherapp.di.networkModule
 import com.pakt_games.weatherapp.di.weatherForecastHomeViewModelModule
 import com.pakt_games.weatherapp.di.weatherForecastSearchViewModelModule
+import com.pakt_games.weatherapp.di.weatherForecastSelectedCityViewModelModule
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastHomeViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,8 +33,10 @@ class WeatherForecastHomeFragment : BaseFragment<WeatherForecastHomeViewModel,Fr
     fun injectKoin() {
         startKoin {
             androidContext(requireActivity())
-            modules(weatherForecastHomeViewModelModule,
+            modules(
+                weatherForecastHomeViewModelModule,
                 weatherForecastSearchViewModelModule,
+                weatherForecastSelectedCityViewModelModule,
                 networkModule
             )
     }
