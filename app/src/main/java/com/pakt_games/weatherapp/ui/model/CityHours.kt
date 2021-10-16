@@ -6,5 +6,5 @@ data class CityHours(
     val temp_f : Double,
     val feelslike_c : Double,
     val feelslike_f : Double,
-    val condution : CityCondution
+    val condition : CityCondition
 )

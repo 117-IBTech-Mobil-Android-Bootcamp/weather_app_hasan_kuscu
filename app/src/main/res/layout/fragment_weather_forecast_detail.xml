@@ -47,7 +47,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewWeatherForecastDetailAppLogo"
-        tools:text="@string/test_text_city_name"/>
+        tools:text="@string/test_text_city_name"
+        android:text="@{model.condition.text}"/>
 
     <TextView
         android:id="@+id/textViewWeatherForecastDetailAppText"
