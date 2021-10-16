@@ -21,7 +21,7 @@ abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding> : Fragment(), 
         savedInstanceState: Bundle?
     ): View? {
         dataBinding = DataBindingUtil.inflate(inflater, getLayoutID(), container, false)
-        injectKoin()
+        actionEvents()
         return dataBinding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,6 +31,6 @@ abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding> : Fragment(), 
     }
     abstract fun getLayoutID(): Int
     abstract fun observeLiveData()
-    abstract fun injectKoin()
+    abstract fun actionEvents()
     override fun shouldCheckInternetConnection() = true
 }

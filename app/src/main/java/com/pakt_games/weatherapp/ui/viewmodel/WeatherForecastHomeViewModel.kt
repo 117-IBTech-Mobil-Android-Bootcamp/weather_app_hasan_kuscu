@@ -8,6 +8,6 @@ import com.pakt_games.weatherapp.ui.view.WeatherForecastSelectedCityFragment
 class WeatherForecastHomeViewModel: ViewModel() {
     val fragments: ArrayList<Fragment> = arrayListOf(
         WeatherForecastSearchFragment(),
-        WeatherForecastSelectedCityFragment()
+        WeatherForecastSelectedCityFragment(),
     )
 }

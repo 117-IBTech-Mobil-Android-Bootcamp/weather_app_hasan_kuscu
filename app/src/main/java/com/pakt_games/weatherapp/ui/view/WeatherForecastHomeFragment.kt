@@ -1,11 +1,13 @@
 package com.pakt_games.weatherapp.ui.view
 
-import androidx.fragment.app.Fragment
+
 import com.pakt_games.weatherapp.R
 import com.pakt_games.weatherapp.base.BaseFragment
 import com.pakt_games.weatherapp.components.ViewPager2Adapter
 import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastHomeBinding
+import com.pakt_games.weatherapp.di.networkModule
 import com.pakt_games.weatherapp.di.weatherForecastHomeViewModelModule
+import com.pakt_games.weatherapp.di.weatherForecastSearchViewModelModule
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastHomeViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,14 +23,21 @@ class WeatherForecastHomeFragment : BaseFragment<WeatherForecastHomeViewModel,Fr
     override fun observeLiveData() {
         val viewPager2SpecialAdapter= ViewPager2Adapter(viewModel.fragments,childFragmentManager,lifecycle)
         dataBinding.viewPager2.adapter= viewPager2SpecialAdapter
-
     }
 
-    override fun injectKoin() {
+    override fun actionEvents() {
+            injectKoin()
+        }
+
+    fun injectKoin() {
         startKoin {
             androidContext(requireActivity())
-            modules(weatherForecastHomeViewModelModule)
-        }
+            modules(weatherForecastHomeViewModelModule,
+                weatherForecastSearchViewModelModule,
+                networkModule
+            )
     }
+
+}
 
 }

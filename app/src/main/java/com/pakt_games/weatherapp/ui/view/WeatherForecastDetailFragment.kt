@@ -6,7 +6,6 @@ import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastDetailBindin
 import com.pakt_games.weatherapp.di.networkModule
 import com.pakt_games.weatherapp.di.weatherForecastDetailRepositoryModule
 import com.pakt_games.weatherapp.di.weatherForecastDetailViewModelModule
-import com.pakt_games.weatherapp.ui.adapter.WeatherForecastDetailRecyclerAdapter
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastDetailViewModel
 import com.pakt_games.weatherapp.utils.showToast
 import org.koin.android.ext.koin.androidContext
@@ -17,10 +16,9 @@ class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewMode
 
     override val viewModel: WeatherForecastDetailViewModel by viewModel()
 
-
     override fun getLayoutID() = R.layout.fragment_weather_forecast_detail
 
-    override fun injectKoin() {
+    override fun actionEvents() {
         startKoin {
             androidContext(requireActivity())
             modules(networkModule, weatherForecastDetailRepositoryModule, weatherForecastDetailViewModelModule)

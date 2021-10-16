@@ -2,6 +2,7 @@ package com.pakt_games.weatherapp.di
 
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastDetailViewModel
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastHomeViewModel
+import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastSearchFragmentViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -10,4 +11,7 @@ val weatherForecastDetailViewModelModule = module {
 }
 val weatherForecastHomeViewModelModule = module {
     viewModel { WeatherForecastHomeViewModel() }
+}
+val weatherForecastSearchViewModelModule = module {
+    viewModel { WeatherForecastSearchFragmentViewModel() }
 }
