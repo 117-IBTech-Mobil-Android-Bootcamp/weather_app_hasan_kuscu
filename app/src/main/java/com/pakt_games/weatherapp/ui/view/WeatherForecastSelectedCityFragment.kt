@@ -6,4 +6,17 @@ import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastSelectedCity
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastSelectedCityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class WeatherForecastSelectedCityFragment 
+class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelectedCityViewModel,FragmentWeatherForecastSelectedCityBinding>() {
+
+    override val viewModel: WeatherForecastSelectedCityViewModel by viewModel()
+
+    override fun getLayoutID(): Int = R.layout.fragment_weather_forecast_selected_city
+
+    override fun observeLiveData() {
+        //TODO
+    }
+
+    override fun actionEvents() {
+        //TODO
+    }
+}
