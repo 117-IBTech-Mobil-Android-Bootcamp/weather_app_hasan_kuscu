@@ -7,8 +7,8 @@ import com.pakt_games.weatherapp.utils.Result
 
 class WeatherForecastDetailRepository(private val api: WeatherForecastAPI) {
 
-    suspend fun getAllMoviesFromRemote(): Result<WeatherForecastResponse> {
-        val currentCityResponse = api.getTopRatedMovies(API_KEY,"London")
+    suspend fun getAllMoviesFromRemote(cityName:String): Result<WeatherForecastResponse> {
+        val currentCityResponse = api.getCity(API_KEY, cityName)
         return if (currentCityResponse != null) {
             Result.Success(currentCityResponse)
         }

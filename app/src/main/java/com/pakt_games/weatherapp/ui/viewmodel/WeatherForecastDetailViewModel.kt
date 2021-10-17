@@ -14,10 +14,10 @@ class WeatherForecastDetailViewModel(private val weatherForecastDetailRepository
     val onMoviesFetched = MutableLiveData<WeatherForecastDetailViewStateModel>()
     val onError = MutableLiveData<Unit>()
 
-    fun prepareMovies() {
+    fun prepareMovies(cityName: String) {
 
         viewModelScope.launch {
-            val remoteResponse = weatherForecastDetailRepository.getAllMoviesFromRemote()
+            val remoteResponse = weatherForecastDetailRepository.getAllMoviesFromRemote(cityName)
             when(remoteResponse){
                 is Result.Success -> {
                     onMoviesFetched.value = WeatherForecastDetailViewStateModel(remoteResponse.data!!)
