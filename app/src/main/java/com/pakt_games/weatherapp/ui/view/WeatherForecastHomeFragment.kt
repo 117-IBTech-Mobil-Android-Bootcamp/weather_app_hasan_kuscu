@@ -5,10 +5,7 @@ import com.pakt_games.weatherapp.R
 import com.pakt_games.weatherapp.base.BaseFragment
 import com.pakt_games.weatherapp.components.ViewPager2Adapter
 import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastHomeBinding
-import com.pakt_games.weatherapp.di.networkModule
-import com.pakt_games.weatherapp.di.weatherForecastHomeViewModelModule
-import com.pakt_games.weatherapp.di.weatherForecastSearchViewModelModule
-import com.pakt_games.weatherapp.di.weatherForecastSelectedCityViewModelModule
+import com.pakt_games.weatherapp.di.*
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastHomeViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,6 +34,7 @@ class WeatherForecastHomeFragment : BaseFragment<WeatherForecastHomeViewModel,Fr
                 weatherForecastHomeViewModelModule,
                 weatherForecastSearchViewModelModule,
                 weatherForecastSelectedCityViewModelModule,
+                weatherForecastSearchRepositoryModule,
                 networkModule
             )
     }
