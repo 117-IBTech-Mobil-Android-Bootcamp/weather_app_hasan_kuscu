@@ -26,7 +26,7 @@ class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewMode
         }
     }
     override fun observeLiveData() {
-        requestedCityName="BURSA"
+        requestedCityName="Bursa"
         viewModel.prepareMovies(requestedCityName!!)
 
         viewModel.onMoviesFetched.observe(this, {

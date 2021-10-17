@@ -17,7 +17,7 @@ class WeatherForecastDetailViewModel(private val weatherForecastDetailRepository
     fun prepareMovies(cityName: String) {
 
         viewModelScope.launch {
-            val remoteResponse = weatherForecastDetailRepository.getAllMoviesFromRemote(cityName)
+            val remoteResponse = weatherForecastDetailRepository.getCityPropertiesFromRemote(cityName)
             when(remoteResponse){
                 is Result.Success -> {
                     onMoviesFetched.value = WeatherForecastDetailViewStateModel(remoteResponse.data!!)

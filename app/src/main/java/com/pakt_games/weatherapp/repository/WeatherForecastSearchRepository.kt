@@ -5,9 +5,9 @@ import com.pakt_games.weatherapp.network.response.WeatherForecastResponse
 import com.pakt_games.weatherapp.utils.API_KEY
 import com.pakt_games.weatherapp.utils.Result
 
-class WeatherForecastDetailRepository(private val api: WeatherForecastAPI) {
+class WeatherForecastSearchRepository(private val api: WeatherForecastAPI) {
 
-    suspend fun getCityPropertiesFromRemote(cityName:String): Result<WeatherForecastResponse> {
+    suspend fun getCityName(cityName:String): Result<WeatherForecastResponse> {
         val currentCityResponse = api.getCity(API_KEY, cityName)
         return if (currentCityResponse != null) {
             Result.Success(currentCityResponse)
