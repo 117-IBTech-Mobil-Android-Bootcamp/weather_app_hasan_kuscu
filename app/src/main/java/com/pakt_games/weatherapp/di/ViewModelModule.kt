@@ -14,7 +14,7 @@ val weatherForecastHomeViewModelModule = module {
     viewModel { WeatherForecastHomeViewModel() }
 }
 val weatherForecastSearchViewModelModule = module {
-    viewModel { WeatherForecastSearchFragmentViewModel() }
+    viewModel { WeatherForecastSearchFragmentViewModel(get()) }
 }
 val weatherForecastSelectedCityViewModelModule = module {
     viewModel { WeatherForecastSelectedCityViewModel() }

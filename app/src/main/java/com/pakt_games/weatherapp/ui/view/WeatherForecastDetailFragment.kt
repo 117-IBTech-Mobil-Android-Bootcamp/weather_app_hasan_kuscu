@@ -30,7 +30,7 @@ class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewMode
         viewModel.prepareCity(requestedCityName!!)
 
         viewModel.onCityFetched.observe(this, {
-            dataBinding.model = it.getList()
+            dataBinding.model = it.getCity()
             dataBinding.executePendingBindings()
         })
         viewModel.onError.observe(this, {
