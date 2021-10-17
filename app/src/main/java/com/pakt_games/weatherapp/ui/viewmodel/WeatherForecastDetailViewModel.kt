@@ -11,16 +11,16 @@ import com.pakt_games.weatherapp.utils.Result
 class WeatherForecastDetailViewModel(private val weatherForecastDetailRepository: WeatherForecastDetailRepository) : ViewModel() {
 
 
-    val onMoviesFetched = MutableLiveData<WeatherForecastDetailViewStateModel>()
+    val onCityFetched = MutableLiveData<WeatherForecastDetailViewStateModel>()
     val onError = MutableLiveData<Unit>()
 
-    fun prepareMovies(cityName: String) {
+    fun prepareCity(cityName: String) {
 
         viewModelScope.launch {
             val remoteResponse = weatherForecastDetailRepository.getCityPropertiesFromRemote(cityName)
             when(remoteResponse){
                 is Result.Success -> {
-                    onMoviesFetched.value = WeatherForecastDetailViewStateModel(remoteResponse.data!!)
+                    onCityFetched.value = WeatherForecastDetailViewStateModel(remoteResponse.data!!)
                 }
                 is Result.Error -> onError.value = Unit
             }

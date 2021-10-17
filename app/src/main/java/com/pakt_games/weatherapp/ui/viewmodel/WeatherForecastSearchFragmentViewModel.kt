@@ -1,9 +1,30 @@
 package com.pakt_games.weatherapp.ui.viewmodel
 
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.pakt_games.weatherapp.ui.view.WeatherForecastSearchFragment
+import androidx.lifecycle.viewModelScope
+import com.pakt_games.weatherapp.repository.WeatherForecastSearchRepository
+import com.pakt_games.weatherapp.ui.model.WeatherForecastDetailViewStateModel
+import com.pakt_games.weatherapp.utils.Result
+import kotlinx.coroutines.launch
 
-class WeatherForecastSearchFragmentViewModel: ViewModel() {
+class WeatherForecastSearchFragmentViewModel(private val weatherForecastDetailRepository: WeatherForecastSearchRepository) : ViewModel() {
 
+
+    val onCityNameFetched = MutableLiveData<WeatherForecastDetailViewStateModel>()
+    val onError = MutableLiveData<Unit>()
+
+    fun prepareCityName(cityName: String) {
+
+        viewModelScope.launch {
+            val remoteResponse = weatherForecastDetailRepository.getCityName(cityName)
+            when(remoteResponse){
+                is Result.Success -> {
+                    onCityNameFetched.value = WeatherForecastDetailViewStateModel(remoteResponse.data!!)
+                }
+                is Result.Error -> onError.value = Unit
+            }
+
+        }
+    }
 }

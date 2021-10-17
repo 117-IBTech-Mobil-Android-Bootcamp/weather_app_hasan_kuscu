@@ -27,9 +27,9 @@ class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewMode
     }
     override fun observeLiveData() {
         requestedCityName="Bursa"
-        viewModel.prepareMovies(requestedCityName!!)
+        viewModel.prepareCity(requestedCityName!!)
 
-        viewModel.onMoviesFetched.observe(this, {
+        viewModel.onCityFetched.observe(this, {
             dataBinding.model = it.getList()
             dataBinding.executePendingBindings()
         })
