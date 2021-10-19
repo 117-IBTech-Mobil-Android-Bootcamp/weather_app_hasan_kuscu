@@ -17,14 +17,14 @@
 
     <ImageView
         android:id="@+id/textViewWeatherForecastDetailAppLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/weather_forecast_detail_project_logo_image_lenght"
+        android:layout_height="@dimen/weather_forecast_detail_project_logo_image_lenght"
         android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintEnd_toStartOf="@+id/textViewWeatherForecastDetailAppText"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/forecast_project_logo" />
 
     <ImageView
         android:id="@+id/imageViewWeatherForecastDetailCityGeneralLogo"
