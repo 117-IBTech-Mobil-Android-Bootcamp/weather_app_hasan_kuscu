@@ -6,7 +6,7 @@
 <data>
     <variable
         name="model"
-        type="com.pakt_games.weatherapp.ui.model.CityCurrent" />
+        type="com.pakt_games.weatherapp.ui.model.CityHours" />
 </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -42,7 +42,8 @@
         app:layout_constraintEnd_toStartOf="@+id/textViewWeatherForecastDetailFahrenayt"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastDetailCelsius"
-        tools:text="@string/weather_forecast_detail_recycler_temperature_number" />
+        tools:text="@string/weather_forecast_detail_recycler_temperature_number"
+        android:text="@{String.valueOf(model.temp_c)}"/>
 
     <TextView
         android:id="@+id/textViewWeatherForecastDetailFahrenayt"
@@ -62,13 +63,15 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastDetailFahrenayt"
-        tools:text="@string/weather_forecast_detail_recycler_temperature_number" />
+        tools:text="@string/weather_forecast_detail_recycler_temperature_number"
+        android:text="@{String.valueOf(model.temp_f)}"/>
 
     <TextView
         android:id="@+id/textViewWeatherForecastDetailAirStatu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/weather_forecast_detail_recycler_air_statu"
+        tools:text="@string/weather_forecast_detail_recycler_air_statu"
+        android:text="@{model.condition.text}"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastDetailDayTime"
@@ -83,7 +86,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView"
         tools:text="@string/test_text_date_day_time"
-        android:text="@{String.valueOf(model.temp_c)}"/>
+        android:text="@{model.time}"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -7,13 +7,13 @@ import com.pakt_games.weatherapp.utils.Result
 
 class WeatherForecastDetailRepository(private val api: WeatherForecastAPI) {
 
-    suspend fun getCityPropertiesFromRemote(cityName:String): Result<WeatherForecastResponse> {
+    suspend fun getCityDailyPropertiesFromRemote(cityName:String): Result<WeatherForecastResponse> {
         val currentCityResponse = api.getCity(API_KEY, cityName)
         return if (currentCityResponse != null) {
             Result.Success(currentCityResponse)
         }
         else Result.Error(
-            "bir hata meydana geldi"
+            "Bir hata meydana geldi"
         )
     }
 }

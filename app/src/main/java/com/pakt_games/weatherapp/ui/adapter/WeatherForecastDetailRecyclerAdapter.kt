@@ -6,9 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.pakt_games.weatherapp.R
 import com.pakt_games.weatherapp.databinding.WeatherForecastDetailRecyclerItemBinding
-import com.pakt_games.weatherapp.ui.model.CityCurrent
+import com.pakt_games.weatherapp.ui.model.CityHours
 
-class WeatherForecastDetailRecyclerAdapter(private val cityList: List<CityCurrent>) : RecyclerView.Adapter<WeatherForecastDetailViewHolder>() {
+class WeatherForecastDetailRecyclerAdapter(private val cityHourList: List<CityHours>) : RecyclerView.Adapter<WeatherForecastDetailViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherForecastDetailViewHolder {
 
         return WeatherForecastDetailViewHolder(
@@ -17,16 +17,16 @@ class WeatherForecastDetailRecyclerAdapter(private val cityList: List<CityCurren
     }
 
     override fun onBindViewHolder(holder: WeatherForecastDetailViewHolder, position: Int) {
-        val city = this.cityList[position]
+        val city = this.cityHourList[position]
         holder.populate(city)
     }
 
-    override fun getItemCount() = this.cityList.size
+    override fun getItemCount() = this.cityHourList.size
 }
 
 class WeatherForecastDetailViewHolder(private val binding: WeatherForecastDetailRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun populate(city: CityCurrent) {
+    fun populate(city: CityHours) {
         binding.model = city
         binding.executePendingBindings()
     }

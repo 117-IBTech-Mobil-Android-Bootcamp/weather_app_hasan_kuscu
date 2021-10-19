@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/weather_forecast_graph"
-    app:startDestination="@id/weatherForecastHomeFragment">
+    app:startDestination="@id/weatherForecastDetailFragment">
 
     <fragment
         android:id="@+id/weatherForecastDetailFragment"

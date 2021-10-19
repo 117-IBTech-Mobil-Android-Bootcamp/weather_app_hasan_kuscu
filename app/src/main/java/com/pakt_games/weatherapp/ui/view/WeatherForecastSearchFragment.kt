@@ -26,7 +26,7 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
 
     private fun autoTextViewIsWork() {
         requestedCityName = dataBinding.autoCompleteTextViewSearch.text.toString()
-        if(requestedCityName!="") 
+        if(requestedCityName!="")
             viewModel.prepareCityName(requestedCityName!!)
         viewModel.onCityNameFetched.observe(this, {
             var cityList= arrayListOf<Any>(it.getCityName(), "Adana")

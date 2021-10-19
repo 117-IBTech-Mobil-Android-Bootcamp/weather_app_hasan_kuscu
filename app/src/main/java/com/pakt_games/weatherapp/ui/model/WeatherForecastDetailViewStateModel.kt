@@ -6,5 +6,5 @@ data class WeatherForecastDetailViewStateModel(val response: WeatherForecastResp
 
     fun getCity(): CityCurrent = response.city
     fun getCityName(): String=response.cityName.name
-
+    fun getDailyCity(): List<CityHours> = response.cityDaily.forecastday[0].cityHours
 }
