@@ -11,18 +11,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/small_margin">
+    android:padding="@dimen/small_margin"
+    android:layout_margin="@dimen/medium_margin">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
+        android:layout_width="@dimen/weather_forecast_detail_reycler_item_image_lenght"
+        android:layout_height="@dimen/weather_forecast_detail_reycler_item_image_lenght"
+        android:downloadImage="@{model.condition.icon}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastDetailAirStatu"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/textViewWeatherForecastDetailCelsius"
