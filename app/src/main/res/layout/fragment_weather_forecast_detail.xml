@@ -62,7 +62,7 @@
         app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastDetailAppLogo"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/test_text_app_name"
-        android:text="@{String.valueOf(model.temp_c)}"/>
+        android:text="@string/project_name"/>
 
     <TextView
         android:id="@+id/textViewWeatherForecastDetailGeneralDateTime"
