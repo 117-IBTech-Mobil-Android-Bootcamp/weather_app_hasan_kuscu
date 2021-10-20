@@ -21,4 +21,6 @@
     <string name="weather_forecast_search_fragment_fells_text">Hissedilen</string>
     <string name="weather_forecast_search_fragment_templature_text">Sıcaklık</string>
     <string name="weather_forecast_search_save_city_text">ŞEHRİ KAYDET</string>
+
+    <string name="weather_forecast_search_location_not_selected">Lokasyon Seçilmemiştir..</string>
 </resources>

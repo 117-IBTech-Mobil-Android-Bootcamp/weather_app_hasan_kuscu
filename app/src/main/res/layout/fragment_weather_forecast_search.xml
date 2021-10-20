@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher"
             android:text="@string/weather_forecast_search_save_city_text"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -160,6 +161,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastSearchStabilFText"
             tools:text="@string/weather_forecast_detail_recycler_air_statu" />
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSearchLocationInformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/weather_forecast_search_location_not_selected"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewSaveCity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center"
+            android:textSize="@dimen/medium_text_size"
+            android:layout_marginBottom="@dimen/x_small_margin"/>
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/group"

@@ -19,16 +19,21 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
 
     override fun observeLiveData() {
        dataBinding.imageViewSearchButton.setOnClickListener {
+           getCityNameData()
            autoTextViewIsWork()
            dataBinding.group.visibility = View.VISIBLE
+           dataBinding.imageViewSaveCity.visibility = View.VISIBLE
+           dataBinding.textViewWeatherForecastSearchLocationInformation.visibility = View.GONE
        }
-
     }
 
-    private fun autoTextViewIsWork() {
+    private fun getCityNameData() {
         requestedCityName = dataBinding.autoCompleteTextViewSearch.text.toString()
         if(requestedCityName!="")
             viewModel.prepareCityName(requestedCityName!!)
+    }
+
+    private fun autoTextViewIsWork() {
         viewModel.onCityNameFetched.observe(this, {
             var cityList= arrayListOf<Any>(it.getCityName())
             var adapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,cityList)
