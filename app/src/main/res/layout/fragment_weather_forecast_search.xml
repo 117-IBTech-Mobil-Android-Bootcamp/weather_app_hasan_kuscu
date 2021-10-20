@@ -4,29 +4,189 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-
+        <variable
+            name="model"
+            type="com.pakt_games.weatherapp.ui.model.CityCurrent"/>
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.view.WeatherForecastSearchFragment">
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextViewSearch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/weather_forecast_search_auto_complate_text_view_hint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageViewSaveCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextViewSearch" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.WeatherForecastSearchFragment">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/weather_forecast_search_auto_complate_text_view_hint"
+            app:layout_constraintEnd_toStartOf="@+id/guildeLineSearch"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/imageViewSaveCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:text="@string/weather_forecast_search_save_city_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewWeatherForecastSearchFeelsCNumber" />
+
+        <ImageView
+            android:id="@+id/imageViewWeatherForecastSearchForecastImage"
+            android:layout_width="@dimen/weather_forecast_detail_reycler_item_image_lenght"
+            android:layout_height="@dimen/weather_forecast_detail_reycler_item_image_lenght"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:downloadImage="@{model.condition.icon}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastSearchFellsFNumber"
+            app:layout_constraintTop_toBottomOf="@+id/textViewWeatherForecastSearchForecastStatu"
+            tools:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/imageViewSearchButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/autoCompleteTextViewSearch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/autoCompleteTextViewSearch"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_search_category_default" />
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSearchCityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewWeatherForecastSearchStabilCText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/autoCompleteTextViewSearch"
+            tools:text="@string/test_text_city_name" />
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSearchStabilCText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="104dp"
+            android:text="@string/weather_forecast_search_fragment_celsius_text"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintStart_toEndOf="@id/guideLineCelsius"
+            app:layout_constraintTop_toBottomOf="@id/autoCompleteTextViewSearch" />
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSearchStabilFText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/weather_forecast_search_fragment_fahrenayt_text"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewWeatherForecastSearchStabilCText"
+            app:layout_constraintStart_toEndOf="@id/guildeLineFahrenayt" />
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSearchTemplatureStabilText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weather_forecast_search_fragment_templature_text"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewWeatherForecastSearchTemplatureCNumber"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSearchFeelsStabilText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weather_forecast_search_fragment_fells_text"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewWeatherForecastSearchFeelsCNumber"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSearchTemplatureCNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x_small_margin"
+            android:text="@{String.valueOf(model.temp_c)}"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintStart_toEndOf="@id/guideLineCelsius"
+            app:layout_constraintTop_toBottomOf="@+id/textViewWeatherForecastSearchStabilCText"
+            tools:text="@string/weather_forecast_detail_recycler_temperature_number" />
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSearchTemplatureFNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(model.temp_f)}"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewWeatherForecastSearchTemplatureCNumber"
+            app:layout_constraintStart_toEndOf="@id/guildeLineFahrenayt"
+            tools:text="@string/weather_forecast_detail_recycler_temperature_number" />
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSearchFeelsCNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x_small_margin"
+            android:text="@{String.valueOf(model.feelslike_c)}"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintStart_toEndOf="@id/guideLineCelsius"
+            app:layout_constraintTop_toBottomOf="@+id/textViewWeatherForecastSearchTemplatureCNumber"
+            tools:text="@string/weather_forecast_detail_recycler_temperature_number" />
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSearchFellsFNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(model.feelslike_f)}"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewWeatherForecastSearchFeelsCNumber"
+            app:layout_constraintStart_toEndOf="@id/guildeLineFahrenayt"
+            tools:text="@string/weather_forecast_detail_recycler_temperature_number" />
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSearchForecastStatu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.condition.text}"
+            android:textSize="@dimen/medium_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewWeatherForecastSearchStabilCText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastSearchStabilFText"
+            tools:text="@string/weather_forecast_detail_recycler_air_statu" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="imageViewWeatherForecastSearchForecastImage,textViewWeatherForecastSearchStabilCText,textViewWeatherForecastSearchCityName,textViewWeatherForecastSearchTemplatureStabilText,textViewWeatherForecastSearchFeelsStabilText,textViewWeatherForecastSearchFeelsCNumber,textViewWeatherForecastSearchTemplatureCNumber,textViewWeatherForecastSearchFellsFNumber,textViewWeatherForecastSearchTemplatureFNumber,textViewWeatherForecastSearchStabilFText,textViewWeatherForecastSearchForecastStatu" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLineCelsius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="158dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guildeLineFahrenayt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="233dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guildeLineSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="362dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

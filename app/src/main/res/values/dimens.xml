@@ -17,7 +17,7 @@
 
     <dimen name="reycler_height_weather_forecast_detail">501dp</dimen>
 
-    <dimen name="weather_forecast_detail_reycler_item_image_lenght">50dp</dimen>
+    <dimen name="weather_forecast_detail_reycler_item_image_lenght">60dp</dimen>
     <dimen name="weather_forecast_detail_project_logo_image_lenght">100dp</dimen>
 
 </resources>
