@@ -12,8 +12,8 @@ interface WeatherForecastDAO {
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMovie(savedCity : SavedCities)
+    suspend fun insertCity(savedCity : SavedCities)
 
     @Query("SELECT * FROM SAVEDCITIES ")
-    suspend fun  fetchMovies() : List<SavedCities>
+    suspend fun  fetchCities() : List<SavedCities>
 }
