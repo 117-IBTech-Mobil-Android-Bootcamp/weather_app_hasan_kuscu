@@ -27,4 +27,7 @@ class WeatherForecastSearchFragmentViewModel(private val weatherForecastDetailRe
 
         }
     }
+    fun saveCityToRoomDB() {
+
+    }
 }

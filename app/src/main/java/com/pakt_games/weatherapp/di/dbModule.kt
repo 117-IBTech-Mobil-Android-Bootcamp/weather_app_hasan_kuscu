@@ -12,5 +12,5 @@ val dbModule = module {
     single { Room.databaseBuilder(androidContext(), WeatherForecastDatabase::class.java, DATABASE_NAME).build() }
 
     // CitiesDao
-    single { get<WeatherForecastDatabase>().citiesDao() }
+    single { get<WeatherForecastDatabase>().weatherForecastDao() }
 }

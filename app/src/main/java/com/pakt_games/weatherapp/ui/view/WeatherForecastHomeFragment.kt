@@ -35,7 +35,8 @@ class WeatherForecastHomeFragment : BaseFragment<WeatherForecastHomeViewModel,Fr
                 weatherForecastSearchViewModelModule,
                 weatherForecastSelectedCityViewModelModule,
                 weatherForecastSearchRepositoryModule,
-                networkModule
+                networkModule,
+                dbModule
             )
     }
 

@@ -22,9 +22,12 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
            getCityNameData()
            autoTextViewIsWork()
            dataBinding.group.visibility = View.VISIBLE
-           dataBinding.imageViewSaveCity.visibility = View.VISIBLE
+           dataBinding.buttonSaveCity.visibility = View.VISIBLE
            dataBinding.textViewWeatherForecastSearchLocationInformation.visibility = View.GONE
        }
+        dataBinding.buttonSaveCity.setOnClickListener {
+
+        }
     }
 
     private fun getCityNameData() {
@@ -35,8 +38,8 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
 
     private fun autoTextViewIsWork() {
         viewModel.onCityNameFetched.observe(this, {
-            var cityList= arrayListOf<Any>(it.getCityName())
-            var adapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,cityList)
+            val cityList= arrayListOf<Any>(it.getCityName())
+            val adapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,cityList)
             dataBinding.autoCompleteTextViewSearch.setAdapter(adapter)
             dataBinding.model = it.getCity()
             dataBinding.executePendingBindings()

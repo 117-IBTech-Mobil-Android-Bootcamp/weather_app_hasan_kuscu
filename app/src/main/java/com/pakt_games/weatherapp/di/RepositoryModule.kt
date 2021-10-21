@@ -8,5 +8,5 @@ val weatherForecastDetailRepositoryModule = module {
     factory { WeatherForecastDetailRepository(get()) }
 }
 val weatherForecastSearchRepositoryModule = module {
-    factory { WeatherForecastSearchRepository(get()) }
+    factory { WeatherForecastSearchRepository(get(),get()) }
 }

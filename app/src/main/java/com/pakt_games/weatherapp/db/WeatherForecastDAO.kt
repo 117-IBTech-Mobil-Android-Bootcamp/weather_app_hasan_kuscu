@@ -10,7 +10,6 @@ import com.pakt_games.weatherapp.ui.model.SavedCities
 @Dao
 interface WeatherForecastDAO {
 
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCity(savedCity : SavedCities)
 
