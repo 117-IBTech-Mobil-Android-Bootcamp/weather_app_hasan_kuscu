@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val networkModule = module {
     factory { provideHttpClient() }
-    single { provideMovieApi(get()) }
+    single { provideCityApi(get()) }
     single { provideRetrofit(get()) }
 }
 
@@ -29,6 +29,6 @@ fun provideRetrofit(httpClient: OkHttpClient) : Retrofit {
         .client(httpClient)
         .build()
 }
-fun provideMovieApi(retrofit: Retrofit) : WeatherForecastAPI {
+fun provideCityApi(retrofit: Retrofit) : WeatherForecastAPI {
     return  retrofit.create(WeatherForecastAPI::class.java)
 }

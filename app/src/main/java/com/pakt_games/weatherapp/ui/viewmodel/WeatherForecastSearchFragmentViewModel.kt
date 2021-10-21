@@ -3,17 +3,25 @@ package com.pakt_games.weatherapp.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pakt_games.weatherapp.db.WeatherForecastDatabase
 import com.pakt_games.weatherapp.repository.WeatherForecastSearchRepository
+import com.pakt_games.weatherapp.ui.model.SavedCities
 import com.pakt_games.weatherapp.ui.model.WeatherForecastDetailViewStateModel
 import com.pakt_games.weatherapp.utils.Result
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class WeatherForecastSearchFragmentViewModel(private val weatherForecastDetailRepository: WeatherForecastSearchRepository) : ViewModel() {
 
-
     val onCityNameFetched = MutableLiveData<WeatherForecastDetailViewStateModel>()
     val onError = MutableLiveData<Unit>()
+    var readAllDataDB : List<SavedCities>? = null
 
+    init {
+        viewModelScope.launch {
+            readAllDataDB = weatherForecastDetailRepository.getAllSavedCitiesData()
+        }
+    }
     fun prepareCityName(cityName: String) {
 
         viewModelScope.launch {
@@ -27,7 +35,10 @@ class WeatherForecastSearchFragmentViewModel(private val weatherForecastDetailRe
 
         }
     }
-    fun saveCityToRoomDB() {
-
+    fun insertCityToDB(savedCities: SavedCities) {
+        viewModelScope.launch(Dispatchers.IO) {
+            weatherForecastDetailRepository.insertCityAsync(savedCities)
+        }
     }
+
 }

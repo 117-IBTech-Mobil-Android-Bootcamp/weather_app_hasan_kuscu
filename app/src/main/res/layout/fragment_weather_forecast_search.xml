@@ -45,7 +45,7 @@
             android:layout_marginTop="@dimen/medium_margin"
             android:downloadImage="@{model.condition.icon}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastSearchFellsFNumber"
+            app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastSearchFeelsFNumber"
             app:layout_constraintTop_toBottomOf="@+id/textViewWeatherForecastSearchForecastStatu"
             tools:src="@mipmap/ic_launcher" />
 
@@ -142,7 +142,7 @@
             tools:text="@string/weather_forecast_detail_recycler_temperature_number" />
 
         <TextView
-            android:id="@+id/textViewWeatherForecastSearchFellsFNumber"
+            android:id="@+id/textViewWeatherForecastSearchFeelsFNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{String.valueOf(model.feelslike_f)}"
@@ -179,7 +179,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:constraint_referenced_ids="imageViewWeatherForecastSearchForecastImage,textViewWeatherForecastSearchStabilCText,textViewWeatherForecastSearchCityName,textViewWeatherForecastSearchTemplatureStabilText,textViewWeatherForecastSearchFeelsStabilText,textViewWeatherForecastSearchFeelsCNumber,textViewWeatherForecastSearchTemplatureCNumber,textViewWeatherForecastSearchFellsFNumber,textViewWeatherForecastSearchTemplatureFNumber,textViewWeatherForecastSearchStabilFText,textViewWeatherForecastSearchForecastStatu" />
+            app:constraint_referenced_ids="imageViewWeatherForecastSearchForecastImage,textViewWeatherForecastSearchStabilCText,textViewWeatherForecastSearchCityName,textViewWeatherForecastSearchTemplatureStabilText,textViewWeatherForecastSearchFeelsStabilText,textViewWeatherForecastSearchFeelsCNumber,textViewWeatherForecastSearchTemplatureCNumber,textViewWeatherForecastSearchFeelsFNumber,textViewWeatherForecastSearchTemplatureFNumber,textViewWeatherForecastSearchStabilFText,textViewWeatherForecastSearchForecastStatu" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideLineCelsius"

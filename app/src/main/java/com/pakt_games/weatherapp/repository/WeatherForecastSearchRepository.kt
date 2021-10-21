@@ -1,5 +1,6 @@
 package com.pakt_games.weatherapp.repository
 
+import androidx.lifecycle.LiveData
 import com.pakt_games.weatherapp.db.WeatherForecastDAO
 import com.pakt_games.weatherapp.network.WeatherForecastAPI
 import com.pakt_games.weatherapp.network.response.WeatherForecastResponse
@@ -18,6 +19,11 @@ class WeatherForecastSearchRepository(private val api: WeatherForecastAPI, priva
             "bir hata meydana geldi"
         )
     }
-    suspend fun insertDataAsync(savedCities: SavedCities) = weatherForecastDAO.insertCity(savedCities)
+    suspend fun insertCityAsync(savedCities: SavedCities) = weatherForecastDAO.insertCity(savedCities)
+
+    suspend fun getAllSavedCitiesData(): List<SavedCities> {
+        val readAllSavedCities: List<SavedCities> =weatherForecastDAO.fetchCities()
+        return readAllSavedCities
+    }
 
 }
