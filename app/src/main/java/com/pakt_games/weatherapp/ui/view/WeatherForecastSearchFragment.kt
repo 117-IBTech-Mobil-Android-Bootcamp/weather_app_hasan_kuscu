@@ -33,7 +33,7 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
         dataBinding.buttonSaveCity.setOnClickListener {
             val sharedPreferences = this.requireActivity().getSharedPreferences("SP", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
-            editor.apply{ putInt("hasan", cityId++) }.apply()
+            editor.apply{ putInt("cityId", cityId++) }.apply()
             insertCityToDatabase(sharedPreferences.getInt("hasan",0))
         }
     }
@@ -83,7 +83,7 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
 
     override fun actionEvents() {
         val sharedPreferences = this.requireActivity().getSharedPreferences("SP", Context.MODE_PRIVATE)
-        cityId= sharedPreferences.getInt("hasan",0)
+        cityId= sharedPreferences.getInt("cityId",0)
     }
 
 }
