@@ -6,7 +6,7 @@ import com.pakt_games.weatherapp.ui.model.CityCurrent
 import com.pakt_games.weatherapp.ui.model.SavedCities
 
 @Database(entities = [SavedCities::class], version = 1)
-abstract class CitiesDB : RoomDatabase() {
+abstract class WeatherForecastDatabase : RoomDatabase() {
 
     abstract fun citiesDao() : WeatherForecastDAO
 
