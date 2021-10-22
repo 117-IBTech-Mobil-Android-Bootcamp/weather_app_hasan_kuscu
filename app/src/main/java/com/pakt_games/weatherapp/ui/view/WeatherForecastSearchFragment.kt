@@ -96,4 +96,5 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
         cityId= sharedPreferences.getInt("cityId",0)
     }
 
+
 }

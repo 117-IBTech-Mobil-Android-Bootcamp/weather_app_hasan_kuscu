@@ -21,9 +21,4 @@ class WeatherForecastSearchRepository(private val api: WeatherForecastAPI, priva
     }
     suspend fun insertCityAsync(savedCities: SavedCities) = weatherForecastDAO.insertCity(savedCities)
 
-    suspend fun getAllSavedCitiesData(): List<SavedCities> {
-        val readAllSavedCities: List<SavedCities> =weatherForecastDAO.fetchCities()
-        return readAllSavedCities
-    }
-
 }

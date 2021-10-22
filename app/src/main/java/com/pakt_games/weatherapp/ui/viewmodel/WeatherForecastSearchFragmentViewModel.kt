@@ -41,4 +41,5 @@ class WeatherForecastSearchFragmentViewModel(private val weatherForecastDetailRe
         }
     }
 
+
 }
