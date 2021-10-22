@@ -15,10 +15,18 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
     override fun getLayoutID(): Int = R.layout.fragment_weather_forecast_selected_city
 
     override fun observeLiveData() {
-        //TODO
+        viewModel.getCityDataInSQL()
+        checkCityInSQLData()
     }
 
     override fun actionEvents() {
         //TODO
+    }
+    private fun checkCityInSQLData() {
+        viewModel.readAllDataDB.observe(viewLifecycleOwner, { cityList->
+            cityList?.let {
+                var hasan=it.size
+            }
+        })
     }
 }

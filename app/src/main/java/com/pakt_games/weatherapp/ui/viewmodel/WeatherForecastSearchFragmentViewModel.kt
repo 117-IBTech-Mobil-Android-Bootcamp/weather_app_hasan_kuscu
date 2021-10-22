@@ -15,7 +15,6 @@ class WeatherForecastSearchFragmentViewModel(private val weatherForecastDetailRe
 
     val onCityNameFetched = MutableLiveData<WeatherForecastDetailViewStateModel>()
     val onError = MutableLiveData<Unit>()
-    var readAllDataDB = MutableLiveData<List<SavedCities>>()
 
     fun prepareCityName(cityName: String) {
 
@@ -35,11 +34,4 @@ class WeatherForecastSearchFragmentViewModel(private val weatherForecastDetailRe
             weatherForecastDetailRepository.insertCityAsync(savedCities)
         }
     }
-    fun getCityDataInSQL() {
-        viewModelScope.launch {
-            readAllDataDB.value = weatherForecastDetailRepository.getAllSavedCitiesData()
-        }
-    }
-
-
 }
