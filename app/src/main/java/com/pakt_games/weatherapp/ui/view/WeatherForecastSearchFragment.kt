@@ -23,6 +23,8 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
     override fun getLayoutID() = R.layout.fragment_weather_forecast_search
 
     override fun observeLiveData() {
+        viewModel.getCityDataInSQL()
+
        dataBinding.imageViewSearchButton.setOnClickListener {
            getCityNameData()
            autoTextViewIsWork()
@@ -34,8 +36,9 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
             val sharedPreferences = this.requireActivity().getSharedPreferences("SP", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.apply{ putInt("cityId", cityId++) }.apply()
-            insertCityToDatabase(sharedPreferences.getInt("hasan",0))
+            insertCityToDatabase(sharedPreferences.getInt("cityId",0))
         }
+        checkCityInSQLData()
     }
 
     private fun insertCityToDatabase(cityId: Int) {
@@ -64,6 +67,13 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
         requestedCityName = dataBinding.autoCompleteTextViewSearch.text.toString()
         if(requestedCityName!="")
             viewModel.prepareCityName(requestedCityName!!)
+    }
+    private fun checkCityInSQLData() {
+        viewModel.readAllDataDB.observe(viewLifecycleOwner, { cityList->
+            cityList?.let {
+                var hasan=it.size
+            }
+        })
     }
 
     private fun autoTextViewIsWork() {
