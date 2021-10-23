@@ -15,6 +15,7 @@ import org.koin.core.context.startKoin
 
 class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewModel, FragmentWeatherForecastDetailBinding>(){
     var requestedCityName: String? = null
+    private var movieTitle ="TEST"
 
     override val viewModel: WeatherForecastDetailViewModel by viewModel()
 
@@ -27,10 +28,16 @@ class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewMode
             modules(networkModule, weatherForecastDetailRepositoryModule, weatherForecastDetailViewModelModule)
         }
     }
-    override fun observeLiveData() {
-        requestedCityName="Bursa"
-        viewModel.prepareCity(requestedCityName!!)
+    fun getSingleMovieData()
+    {
+        arguments?.let {
+            requestedCityName = WeatherForecastDetailFragmentArgs.fromBundle(it).cityName
+        }
+        requestedCityName?.let { viewModel.prepareCity(it) }
 
+    }
+    override fun observeLiveData() {
+        getSingleMovieData()
         viewModel.onCityFetched.observe(this, {
             dataBinding.recyclerviewWeatherForecastDetail.adapter = WeatherForecastDetailRecyclerAdapter(it.getDailyCity())
             dataBinding.executePendingBindings()

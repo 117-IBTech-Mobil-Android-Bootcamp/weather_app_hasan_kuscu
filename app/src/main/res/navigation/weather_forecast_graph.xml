@@ -12,6 +12,10 @@
         <action
             android:id="@+id/action_weatherForecastDetailFragment_to_weatherForecastSelectedCityFragment"
             app:destination="@id/weatherForecastSelectedCityFragment" />
+        <argument
+            android:name="cityName"
+            app:argType="string"
+            android:defaultValue='"Bursa"' />
     </fragment>
     <fragment
         android:id="@+id/weatherForecastSelectedCityFragment"

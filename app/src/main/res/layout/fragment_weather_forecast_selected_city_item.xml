@@ -10,32 +10,158 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.AddFragment"
-        android:background="@drawable/night_background">
+        android:background="@drawable/morning_background"
+        tools:context=".fragment.AddFragment">
 
         <TextView
-            android:id="@+id/hasanTEXT"
+            android:id="@+id/textViewCityName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/large_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/test_text_city_name" />
+
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSelectedCityCelsiusValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewWeatherForecastSelectedCityFahrenaytValue"
+            app:layout_constraintEnd_toStartOf="@+id/textViewTempStabilC"
+            app:layout_constraintStart_toStartOf="@+id/textViewTempStabilC"
+            tools:text="@string/test_text_number" />
+
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSelectedCityFeelslikeCelsiusValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewWeatherForecastSelectedCityFahrenaytValue"
+            app:layout_constraintEnd_toStartOf="@+id/textViewFellStabilC"
+            app:layout_constraintStart_toStartOf="@+id/textViewFellStabilC"
+            tools:text="@string/test_text_number" />
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSelectedCityFeelslikeFahrenaytValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewWeatherForecastSelectedCityFahrenaytValue"
+            app:layout_constraintEnd_toEndOf="@+id/textViewFellStabilF"
+            app:layout_constraintStart_toEndOf="@+id/textViewFellStabilF"
+            tools:text="@string/test_text_number" />
+
+        <TextView
+            android:id="@+id/textViewStabilTempText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weather_forecast_selected_fragment_templature_text"
+            android:textSize="@dimen/large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewStabilFeelsText"
+            app:layout_constraintEnd_toStartOf="@+id/textViewStabilFeelsText"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewStabilFeelsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:text="@string/weather_forecast_selected_fragment_fells_text"
+            android:textSize="@dimen/large_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textViewStabilTempText"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCityName"
+            android:layout_marginTop="@dimen/medium_margin"/>
+
+        <TextView
+            android:id="@+id/textViewWeatherForecastSelectedCityFahrenaytValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:textSize="@dimen/x_large_text_size"
+            app:layout_constraintEnd_toEndOf="@+id/textViewTempStabilF"
+            app:layout_constraintStart_toEndOf="@+id/textViewTempStabilF"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTempStabilF"
+            tools:text="@string/test_text_number" />
+
+        <TextView
+            android:id="@+id/textViewTempStabilC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weather_forecast_select_city_fragment_item_celcius"
+            android:textSize="@dimen/large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewTempStabilF"
+            app:layout_constraintStart_toStartOf="@+id/textViewStabilTempText" />
+
+        <TextView
+            android:id="@+id/textViewTempStabilF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weather_forecast_select_city_fragment_item_fahrenayt"
+            android:textSize="@dimen/large_text_size"
+            app:layout_constraintEnd_toEndOf="@+id/textViewStabilTempText"
+            app:layout_constraintTop_toBottomOf="@+id/textViewStabilTempText"
+            android:layout_marginTop="@dimen/medium_margin"/>
+
+        <TextView
+            android:id="@+id/textViewFellStabilC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weather_forecast_select_city_fragment_item_celcius"
+            android:textSize="@dimen/large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewTempStabilF"
+            app:layout_constraintStart_toStartOf="@+id/textViewStabilFeelsText" />
+
+        <TextView
+            android:id="@+id/textViewFellStabilF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weather_forecast_select_city_fragment_item_fahrenayt"
+            android:textSize="@dimen/large_text_size"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textViewTempStabilF"
+            app:layout_constraintEnd_toEndOf="@+id/textViewStabilFeelsText" />
+
+        <ImageView
+            android:id="@+id/imageViewAirStatuIcon"
+            android:layout_width="@dimen/weather_forecast_selected_city_fragment_item_image_lenght"
+            android:layout_height="@dimen/weather_forecast_selected_city_fragment_item_image_lenght"
+            android:layout_marginTop="@dimen/small_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewWeatherForecastSelectedCityFahrenaytValue"
+            tools:src="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/textViewCityAirStatuText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:text="DENEME"
+            android:layout_marginTop="@dimen/small_margin"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewAirStatuIcon"
+            app:layout_constraintStart_toStartOf="@+id/imageViewAirStatuIcon"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewAirStatuIcon"
+            tools:text="@string/weather_forecast_detail_recycler_air_statu"
+            android:textSize="@dimen/x_large_text_size"/>
+
+        <Button
+            android:id="@+id/buttonGoToCityDetailPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:rotationX="23"
+            android:text="@string/weather_forecast_saved_city_button_go_detail_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFragment" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewCityAirStatuText" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="@string/app_name"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

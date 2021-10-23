@@ -7,11 +7,15 @@
     <string name="weather_forecast_detail_temperature">Temperature</string>
     <string name="weather_forecast_detail_recycler_item_fahrenayt">F: </string>
     <string name="weather_forecast_detail_recycler_item_celcius">C: </string>
+    <string name="weather_forecast_select_city_fragment_item_celcius">C</string>
+    <string name="weather_forecast_select_city_fragment_item_fahrenayt">F</string>
     <string name="weather_forecast_detail_recycler_temperature_number">00</string>
     <string name="weather_forecast_detail_recycler_air_statu">Sunny</string>
     <string name="weather_forecast_search_auto_complate_text_view_hint">Lütfen lokasyon giriniz</string>
 
     <string name="test_text_app_name">TEST APP NAME</string>
+    <string name="test_text">TEST</string>
+    <string name="test_text_number">00</string>
     <string name="test_text_city_name">BURSA</string>
     <string name="test_text_date_general_time">2021–10-12</string>
     <string name="test_text_date_day_time">2021-10-12 00:00</string>
@@ -19,10 +23,13 @@
     <string name="weather_forecast_search_fragment_fahrenayt_text">F</string>
     <string name="weather_forecast_search_fragment_celsius_text">C</string>
     <string name="weather_forecast_search_fragment_fells_text">Hissedilen</string>
+    <string name="weather_forecast_selected_fragment_fells_text">Hissedilen</string>
     <string name="weather_forecast_search_fragment_templature_text">Sıcaklık</string>
+    <string name="weather_forecast_selected_fragment_templature_text">Sıcaklık</string>
     <string name="weather_forecast_search_save_city_text">ŞEHRİ KAYDET</string>
     <string name="weather_forecast_search_saved_city_text">Kayıtlı Şehirlerim</string>
     <string name="weather_forecast_saved_city_general_text">KAYITLI ŞEHİRLERİM</string>
+    <string name="weather_forecast_saved_city_button_go_detail_text">ŞEHRİN DETAYINA GİT</string>
 
     <string name="weather_forecast_search_location_not_selected">Lokasyon Seçilmemiştir..</string>
 </resources>
