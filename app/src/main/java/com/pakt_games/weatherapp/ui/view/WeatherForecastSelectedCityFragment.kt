@@ -8,7 +8,6 @@ import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastSelectedCity
 import com.pakt_games.weatherapp.di.*
 import com.pakt_games.weatherapp.ui.model.SavedCities
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastSelectedCityViewModel
-import com.pakt_games.weatherapp.utils.showToast
 import kotlinx.android.synthetic.main.fragment_weather_forecast_selected_city.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,7 +27,7 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
     override fun observeLiveData() {
         viewModel.getCityDataInSQL()
         val adapter = CustomRegisteredCitiesPagerAdapter(childFragmentManager)
-        pagerHasan.adapter = adapter
+        pagerCities.adapter = adapter
         checkCityInSQLData(adapter)
 
         dataBinding.imageViewBackToSearchPage.setOnClickListener {
@@ -46,7 +45,7 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
                     index=index.inc()
                     val fragment = WeatherForecastSelectedCityItemFragment.newInstance(i,it)
                     adapter.addFragment(fragment)
-                    pagerHasan.currentItem = index
+                    pagerCities.currentItem = index
                 }
             }
         })

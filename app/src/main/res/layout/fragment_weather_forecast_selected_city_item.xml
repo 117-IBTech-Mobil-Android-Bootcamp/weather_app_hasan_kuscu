@@ -10,7 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.AddFragment">
+        tools:context=".fragment.AddFragment"
+        android:background="@drawable/night_background">
 
         <TextView
             android:id="@+id/hasanTEXT"

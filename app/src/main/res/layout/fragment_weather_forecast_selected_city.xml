@@ -11,7 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.WeatherForecastSelectedCityFragment">
+        tools:context=".ui.view.WeatherForecastSelectedCityFragment"
+        android:background="@drawable/night_background">
 
         <ImageView
             android:id="@+id/imageViewBackToSearchPage"
@@ -41,10 +42,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewBackToSearchPage"
-            tools:ignore="NotSibling">
+            tools:ignore="NotSibling"
+            android:background="@drawable/night_background">
 
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/pagerHasan"
+                android:id="@+id/pagerCities"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
