@@ -3,23 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/weather_forecast_graph"
-    app:startDestination="@id/weatherForecastHomeFragment">
+    app:startDestination="@id/weatherForecastSearchFragment">
 
     <fragment
         android:id="@+id/weatherForecastDetailFragment"
         android:name="com.pakt_games.weatherapp.ui.view.WeatherForecastDetailFragment"
         android:label="WeatherForecastDetailFragment" >
         <action
-            android:id="@+id/action_weatherForecastDetailFragment_to_weatherForecastHomeFragment"
-            app:destination="@id/weatherForecastHomeFragment" />
+            android:id="@+id/action_weatherForecastDetailFragment_to_weatherForecastSelectedCityFragment"
+            app:destination="@id/weatherForecastSelectedCityFragment" />
     </fragment>
     <fragment
-        android:id="@+id/weatherForecastHomeFragment"
-        android:name="com.pakt_games.weatherapp.ui.view.WeatherForecastHomeFragment"
-        android:label="fragment_weather_forecast_home"
-        tools:layout="@layout/fragment_weather_forecast_home" >
+        android:id="@+id/weatherForecastSelectedCityFragment"
+        android:name="com.pakt_games.weatherapp.ui.view.WeatherForecastSelectedCityFragment"
+        android:label="WeatherForecastSelectedCityFragment" >
         <action
-            android:id="@+id/action_weatherForecastHomeFragment_to_weatherForecastDetailFragment"
+            android:id="@+id/action_weatherForecastSelectedCityFragment_to_weatherForecastSearchFragment"
+            app:destination="@id/weatherForecastSearchFragment" />
+        <action
+            android:id="@+id/action_weatherForecastSelectedCityFragment_to_weatherForecastDetailFragment"
             app:destination="@id/weatherForecastDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherForecastSearchFragment"
+        android:name="com.pakt_games.weatherapp.ui.view.WeatherForecastSearchFragment"
+        android:label="WeatherForecastSearchFragment" >
+        <action
+            android:id="@+id/action_weatherForecastSearchFragment_to_weatherForecastSelectedCityFragment"
+            app:destination="@id/weatherForecastSelectedCityFragment" />
     </fragment>
 </navigation>

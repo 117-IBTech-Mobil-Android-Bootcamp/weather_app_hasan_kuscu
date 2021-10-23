@@ -2,13 +2,22 @@ package com.pakt_games.weatherapp.ui.view
 
 import com.pakt_games.weatherapp.R
 import com.pakt_games.weatherapp.base.BaseFragment
+import com.pakt_games.weatherapp.components.CustomRegisteredCitiesPagerAdapter
 import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastSelectedCityBinding
+import com.pakt_games.weatherapp.di.*
+import com.pakt_games.weatherapp.ui.model.SavedCities
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastSelectedCityViewModel
 import com.pakt_games.weatherapp.utils.showToast
+import kotlinx.android.synthetic.main.fragment_weather_forecast_selected_city.*
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.startKoin
 
 class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelectedCityViewModel,FragmentWeatherForecastSelectedCityBinding>() {
+
+    private var index: Int = 0
     var requestedCityName: String? = null
+    var list : List<SavedCities> = arrayListOf()
 
     override val viewModel: WeatherForecastSelectedCityViewModel by viewModel()
 
@@ -16,17 +25,43 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
 
     override fun observeLiveData() {
         viewModel.getCityDataInSQL()
-        checkCityInSQLData()
+        val adapter = CustomRegisteredCitiesPagerAdapter(childFragmentManager)
+        pagerHasan.adapter = adapter
+        checkCityInSQLData(adapter)
     }
 
     override fun actionEvents() {
-        //TODO
+        //injectKoin()
     }
-    private fun checkCityInSQLData() {
+    private fun checkCityInSQLData(adapter: CustomRegisteredCitiesPagerAdapter) {
         viewModel.readAllDataDB.observe(viewLifecycleOwner, { cityList->
             cityList?.let {
-                var hasan=it.size
+                for (i in 0..it.size-1) {
+                    index=index.inc()
+                    val fragment = WeatherForecastSelectedCityItemFragment.newInstance(i,it)
+                    adapter.addFragment(fragment)
+                    pagerHasan.currentItem = index
+                }
             }
         })
+    }
+    private fun createFragment(i: Int,adapter: CustomRegisteredCitiesPagerAdapter,list: List<SavedCities>) {
+        index=index.inc()
+        val fragment = WeatherForecastSelectedCityItemFragment.newInstance(i,list)
+        adapter.addFragment(fragment)
+        pagerHasan.currentItem = index
+    }
+    fun injectKoin() {
+        startKoin {
+            androidContext(requireActivity())
+            modules(
+                weatherForecastSearchViewModelModule,
+                weatherForecastSelectedCityViewModelModule,
+                weatherForecastSearchRepositoryModule,
+                weatherForecastSelectedCityRepositoryModule,
+                networkModule,
+                dbModule
+            )
+        }
     }
 }

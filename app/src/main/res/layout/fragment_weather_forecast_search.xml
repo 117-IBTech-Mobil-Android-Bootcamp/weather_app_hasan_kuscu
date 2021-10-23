@@ -35,8 +35,20 @@
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewWeatherForecastSearchFeelsCNumber" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonGoToCitySavedPage" />
+
+        <Button
+            android:id="@+id/buttonGoToCitySavedPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:text="@string/weather_forecast_search_saved_city_text"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonSaveCity"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/imageViewWeatherForecastSearchForecastImage"
@@ -166,13 +178,14 @@
             android:id="@+id/textViewWeatherForecastSearchLocationInformation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x_small_margin"
+            android:gravity="center"
             android:text="@string/weather_forecast_search_location_not_selected"
+            android:textSize="@dimen/medium_text_size"
             app:layout_constraintBottom_toTopOf="@+id/buttonSaveCity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:gravity="center"
-            android:textSize="@dimen/medium_text_size"
-            android:layout_marginBottom="@dimen/x_small_margin"/>
+            app:layout_constraintTop_toTopOf="@+id/autoCompleteTextViewSearch" />
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/group"
