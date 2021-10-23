@@ -3,6 +3,8 @@ package com.pakt_games.weatherapp.ui.view
 import android.content.Context
 import android.view.View
 import android.widget.ArrayAdapter
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.pakt_games.weatherapp.R
 import com.pakt_games.weatherapp.base.BaseFragment
 import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastSearchBinding
@@ -13,6 +15,7 @@ import com.pakt_games.weatherapp.utils.showToast
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 
 class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragmentViewModel, FragmentWeatherForecastSearchBinding>() {
 
@@ -37,6 +40,10 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
             val editor = sharedPreferences.edit()
             editor.apply{ putInt("cityId", cityId++) }.apply()
             insertCityToDatabase(sharedPreferences.getInt("cityId",0))
+            showToast("Şehriniz Başarı ile Kayıt Edilmiştir.")
+        }
+        dataBinding.buttonGoToCitySavedPage.setOnClickListener {
+            getSavedCities()
         }
     }
 
@@ -94,13 +101,16 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
             androidContext(requireActivity())
             modules(
                 weatherForecastSearchViewModelModule,
-                weatherForecastSelectedCityViewModelModule,
                 weatherForecastSearchRepositoryModule,
-                weatherForecastSelectedCityRepositoryModule,
                 networkModule,
                 dbModule
             )
         }
 
+    }
+    fun getSavedCities() {
+        val action=WeatherForecastSearchFragmentDirections.actionWeatherForecastSearchFragmentToWeatherForecastSelectedCityFragment()
+        findNavController().navigate(action)
+        stopKoin()
     }
 }
