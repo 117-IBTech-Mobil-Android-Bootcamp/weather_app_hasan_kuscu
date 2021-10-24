@@ -1,5 +1,6 @@
 package com.pakt_games.weatherapp.ui.view
 
+import android.os.Build
 import androidx.navigation.fragment.findNavController
 import com.pakt_games.weatherapp.R
 import com.pakt_games.weatherapp.base.BaseFragment
@@ -8,11 +9,14 @@ import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastSelectedCity
 import com.pakt_games.weatherapp.di.*
 import com.pakt_games.weatherapp.ui.model.SavedCities
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastSelectedCityViewModel
+import com.pakt_games.weatherapp.utils.showToast
 import kotlinx.android.synthetic.main.fragment_weather_forecast_selected_city.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
+import java.time.LocalDateTime
+import java.time.LocalDateTime.*
 
 class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelectedCityViewModel,FragmentWeatherForecastSelectedCityBinding>() {
 
@@ -64,4 +68,22 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
         findNavController().navigate(action)
         stopKoin()
     }
+    fun updateAllRoomDatabase() {
+        val nowTime: Int
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            nowTime = now().hour
+            showToast(nowTime.toString())
+            if(nowTime==23)
+            {
+                viewModel.readAllDataDB.observe(viewLifecycleOwner, { cityList->
+                    cityList?.let {
+                        for (i in 0..it.size-1) {
+
+                        }
+                    }
+                })
+            }
+        }
+    }
+
 }
