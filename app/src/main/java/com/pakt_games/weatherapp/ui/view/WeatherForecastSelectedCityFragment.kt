@@ -17,7 +17,6 @@ import org.koin.core.context.stopKoin
 class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelectedCityViewModel,FragmentWeatherForecastSelectedCityBinding>() {
 
     private var index: Int = 0
-    var requestedCityName: String? = null
     var list : List<SavedCities> = arrayListOf()
 
     override val viewModel: WeatherForecastSelectedCityViewModel by viewModel()

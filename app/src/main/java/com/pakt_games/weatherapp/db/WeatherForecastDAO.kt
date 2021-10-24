@@ -1,10 +1,7 @@
 package com.pakt_games.weatherapp.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.pakt_games.weatherapp.ui.model.CityCurrent
 import com.pakt_games.weatherapp.ui.model.SavedCities
 
@@ -13,6 +10,9 @@ interface WeatherForecastDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCity(savedCity : SavedCities)
+
+    @Update
+    suspend fun updateSavedCity(savedCity: SavedCities)
 
     @Query("SELECT * FROM SAVEDCITIES ")
     suspend fun  fetchCities() : List<SavedCities>

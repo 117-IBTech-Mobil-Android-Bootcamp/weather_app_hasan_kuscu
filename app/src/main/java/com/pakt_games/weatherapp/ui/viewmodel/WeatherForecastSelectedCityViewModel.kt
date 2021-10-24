@@ -15,4 +15,7 @@ class WeatherForecastSelectedCityViewModel(private val weatherForecastSelectedCi
             readAllDataDB.value = weatherForecastSelectedCityRepository.getAllSavedCitiesData()
         }
     }
+    fun updateDatabaseCityData() {
+
+    }
 }
