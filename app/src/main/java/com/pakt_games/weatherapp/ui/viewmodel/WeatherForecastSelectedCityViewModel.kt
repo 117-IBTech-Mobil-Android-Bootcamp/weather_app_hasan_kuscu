@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pakt_games.weatherapp.repository.WeatherForecastSelectedCityRepository
 import com.pakt_games.weatherapp.ui.model.SavedCities
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class WeatherForecastSelectedCityViewModel(private val weatherForecastSelectedCityRepository: WeatherForecastSelectedCityRepository) :ViewModel() {
@@ -15,7 +16,9 @@ class WeatherForecastSelectedCityViewModel(private val weatherForecastSelectedCi
             readAllDataDB.value = weatherForecastSelectedCityRepository.getAllSavedCitiesData()
         }
     }
-    fun updateDatabaseCityData() {
-
+    fun updateDatabaseCityData(savedCities: SavedCities) {
+        viewModelScope.launch(Dispatchers.IO) {
+            weatherForecastSelectedCityRepository.updateCity(savedCities)
+        }
     }
 }
