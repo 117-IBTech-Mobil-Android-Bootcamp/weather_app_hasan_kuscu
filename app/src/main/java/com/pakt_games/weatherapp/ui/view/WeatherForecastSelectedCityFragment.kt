@@ -8,6 +8,7 @@ import com.pakt_games.weatherapp.components.CustomRegisteredCitiesPagerAdapter
 import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastSelectedCityBinding
 import com.pakt_games.weatherapp.di.*
 import com.pakt_games.weatherapp.ui.model.SavedCities
+import com.pakt_games.weatherapp.ui.model.WeatherForecastDetailViewStateModel
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastSelectedCityViewModel
 import com.pakt_games.weatherapp.utils.showToast
 import kotlinx.android.synthetic.main.fragment_weather_forecast_selected_city.*
@@ -40,6 +41,7 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
 
     override fun actionEvents() {
         injectKoin()
+        updateAllRoomDatabase()
     }
     private fun checkCityInSQLData(adapter: CustomRegisteredCitiesPagerAdapter) {
         viewModel.readAllDataDB.observe(viewLifecycleOwner, { cityList->
@@ -59,7 +61,8 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
             modules(
                 weatherForecastSelectedCityViewModelModule,
                 weatherForecastSelectedCityRepositoryModule,
-                dbModule
+                dbModule,
+                networkModule
             )
         }
     }
@@ -73,17 +76,32 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             nowTime = now().hour
             showToast(nowTime.toString())
-            if(nowTime==23)
+            if(true)
             {
                 viewModel.readAllDataDB.observe(viewLifecycleOwner, { cityList->
                     cityList?.let {
                         for (i in 0..it.size-1) {
-
+                            viewModel.getCityProperties(it[i].cityName)
+                            viewModel.onCityNameFetched.observe(viewLifecycleOwner,{
+                                updateCityInDatabase(i+1,it)
+                            })
                         }
                     }
                 })
             }
         }
+    }
+    private fun updateCityInDatabase(cityRoomId: Int,it: WeatherForecastDetailViewStateModel) {
+        viewModel.updateDatabaseCityData(
+            cityRoomId,
+            it.getCityName(),
+            it.getCity().temp_c.toString(),
+            it.getCity().temp_f.toString(),
+            it.getCity().feelslike_c.toString(),
+            it.getCity().feelslike_f.toString(),
+            it.getCity().condition.text,
+            it.getCity().condition.icon
+        )
     }
 
 }

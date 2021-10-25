@@ -38,8 +38,8 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
         dataBinding.buttonSaveCity.setOnClickListener {
             val sharedPreferences = this.requireActivity().getSharedPreferences("SP", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
-            editor.apply{ putInt("cityId", cityId++) }.apply()
-            insertCityToDatabase(sharedPreferences.getInt("cityId",0))
+            editor.apply{ putInt("citySearchLiveId", cityId++) }.apply()
+            insertCityToDatabase(sharedPreferences.getInt("citySearchLiveId",0))
             showToast("Şehriniz Başarı ile Kayıt Edilmiştir.")
         }
         dataBinding.buttonGoToCitySavedPage.setOnClickListener {
@@ -63,7 +63,7 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
             feelslike_c = feelslike_c,
             feelslike_f = feelslike_f,
             cityAirStatuText =cityAirStatu,
-            cityAitStatuIcon = image
+            cityAirStatuIcon = image
         )
         viewModel.insertCityToDB(model)
 
@@ -93,7 +93,7 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
 
     override fun actionEvents() {
         val sharedPreferences = this.requireActivity().getSharedPreferences("SP", Context.MODE_PRIVATE)
-        cityId= sharedPreferences.getInt("cityId",0)
+        cityId= sharedPreferences.getInt("citySearchLiveId",0)+1
         injectKoin()
     }
     fun injectKoin() {
@@ -106,7 +106,6 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
                 dbModule
             )
         }
-
     }
     fun getSavedCities() {
         val action=WeatherForecastSearchFragmentDirections.actionWeatherForecastSearchFragmentToWeatherForecastSelectedCityFragment()

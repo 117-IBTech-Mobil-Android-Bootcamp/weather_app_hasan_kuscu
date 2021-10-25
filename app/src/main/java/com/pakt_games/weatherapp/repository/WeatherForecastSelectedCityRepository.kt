@@ -22,6 +22,7 @@ class WeatherForecastSelectedCityRepository(private val api: WeatherForecastAPI,
         val readAllSavedCities: List<SavedCities> =weatherForecastDAO.fetchCities()
         return readAllSavedCities
     }
-    suspend fun updateCity(savedCity: SavedCities) = weatherForecastDAO.updateSavedCity(savedCity)
+    suspend fun updateCity(id:Int,cityName: String, temp_c: String, temp_f: String, feelslike_c: String, feelslike_f: String, cityAirStatuText: String,
+                           cityAirStatuIcon: String) = weatherForecastDAO.updateSavedCity(id,cityName, temp_c, temp_f, feelslike_c, feelslike_f, cityAirStatuText, cityAirStatuIcon)
 
 }

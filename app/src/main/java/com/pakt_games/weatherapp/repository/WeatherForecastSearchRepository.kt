@@ -21,4 +21,5 @@ class WeatherForecastSearchRepository(private val api: WeatherForecastAPI, priva
     }
     suspend fun insertCityAsync(savedCities: SavedCities) = weatherForecastDAO.insertCity(savedCities)
 
+    suspend fun deleteTable()=weatherForecastDAO.delete()
 }

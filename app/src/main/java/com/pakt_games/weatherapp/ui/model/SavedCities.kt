@@ -13,5 +13,5 @@ data class SavedCities(
         @ColumnInfo(name = "feelslike_c") val feelslike_c : String,
         @ColumnInfo(name = "feelslike_f") val feelslike_f : String,
         @ColumnInfo(name = "cityAirStatuText") val cityAirStatuText : String,
-        @ColumnInfo(name = "cityAirStatuIcon") val cityAitStatuIcon : String,
+        @ColumnInfo(name = "cityAirStatuIcon") val cityAirStatuIcon : String,
 )

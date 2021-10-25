@@ -39,11 +39,9 @@ class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewMode
     override fun observeLiveData() {
         getSingleMovieData()
         viewModel.onCityFetched.observe(this, {
-            dataBinding.recyclerviewWeatherForecastDetail.adapter = WeatherForecastDetailRecyclerAdapter(it.getDailyCity())
+            dataBinding.model=it.cityName
+            dataBinding.recyclerviewWeatherForecastDetail.adapter = WeatherForecastDetailRecyclerAdapter(it.cityDaily.forecastday[0].cityHours)
             dataBinding.executePendingBindings()
-        })
-        viewModel.onError.observe(this, {
-            showToast("Bir hata meydana geldi")
         })
     }
 

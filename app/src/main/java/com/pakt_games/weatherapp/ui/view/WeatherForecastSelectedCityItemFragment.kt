@@ -39,7 +39,7 @@ class WeatherForecastSelectedCityItemFragment : Fragment() {
             bundle.putString("cityFahrenaytValue", list[i].temp_f)
             bundle.putString("cityFellslikeCelsiusValue", list[i].feelslike_c)
             bundle.putString("cityFellslikeFahrenaytValue", list[i].feelslike_f)
-            bundle.putString("cityAirIcon", list[i].cityAitStatuIcon)
+            bundle.putString("cityAirIcon", list[i].cityAirStatuIcon)
             fragment.arguments = bundle
             return fragment
         }

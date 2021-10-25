@@ -11,9 +11,13 @@ interface WeatherForecastDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCity(savedCity : SavedCities)
 
-    @Update
-    suspend fun updateSavedCity(savedCity: SavedCities)
+    @Query("UPDATE SAVEDCITIES SET cityName=:cityName, temp_c=:temp_c, temp_f=:temp_f, feelslike_c=:feelslike_c, feelslike_f=:feelslike_f,cityAirStatuText=:cityAirStatuText, cityAirStatuIcon=:cityAirStatuIcon WHERE id=:id")
+    suspend fun updateSavedCity(id:Int,cityName: String, temp_c: String, temp_f: String, feelslike_c: String, feelslike_f: String, cityAirStatuText: String,
+                                cityAirStatuIcon: String)
 
     @Query("SELECT * FROM SAVEDCITIES ")
     suspend fun  fetchCities() : List<SavedCities>
+
+    @Query("DELETE FROM SAVEDCITIES")
+    suspend fun delete()
 }
