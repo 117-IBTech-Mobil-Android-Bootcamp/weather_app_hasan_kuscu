@@ -1,5 +1,6 @@
 package com.pakt_games.weatherapp.ui.view
 
+import androidx.navigation.fragment.findNavController
 import com.pakt_games.weatherapp.R
 import com.pakt_games.weatherapp.base.BaseFragment
 import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastDetailBinding
@@ -12,6 +13,7 @@ import com.pakt_games.weatherapp.utils.showToast
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 
 class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewModel, FragmentWeatherForecastDetailBinding>(){
     var requestedCityName: String? = null
@@ -43,6 +45,14 @@ class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewMode
             dataBinding.recyclerviewWeatherForecastDetail.adapter = WeatherForecastDetailRecyclerAdapter(it.cityDaily.forecastday[0].cityHours)
             dataBinding.executePendingBindings()
         })
+        dataBinding.imageViewGoToSelectedPage.setOnClickListener {
+            goToSelectedPage()
+        }
+    }
+    fun goToSelectedPage() {
+        val action = WeatherForecastDetailFragmentDirections.actionWeatherForecastDetailFragmentToWeatherForecastSelectedCityFragment()
+        findNavController().navigate(action)
+        stopKoin()
     }
 
 }
