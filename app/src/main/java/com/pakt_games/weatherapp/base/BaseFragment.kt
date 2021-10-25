@@ -1,5 +1,9 @@
 package com.pakt_games.weatherapp.base
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,10 +31,36 @@ abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding> : Fragment(), 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeLiveData()
-        showToast(shouldCheckInternetConnection().toString())
+        if(shouldCheckInternetConnection(requireContext())) showToast("İnternete Bağlısınız")
+        else showToast("İnternete Bağlı Değilsiniz")
     }
     abstract fun getLayoutID(): Int
     abstract fun observeLiveData()
     abstract fun actionEvents()
-    override fun shouldCheckInternetConnection() = true
+    override fun shouldCheckInternetConnection(context: Context): Boolean {
+        if (context == null) return false
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            if (capabilities != null) {
+                when {
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
+                        return true
+                    }
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
+                        return true
+                    }
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> {
+                        return true
+                    }
+                }
+            }
+        } else {
+            val activeNetworkInfo = connectivityManager.activeNetworkInfo
+            if (activeNetworkInfo != null && activeNetworkInfo.isConnected) {
+                return true
+            }
+        }
+        return false
+    }
 }
