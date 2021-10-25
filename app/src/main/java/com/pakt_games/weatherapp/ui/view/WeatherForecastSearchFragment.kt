@@ -78,10 +78,10 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
 
     private fun autoTextViewIsWork() {
         viewModel.onCityNameFetched.observe(this, {
-            val cityList= arrayListOf<Any>(it.getCityName())
+            val cityList= arrayListOf<Any>(it.cityName.name)
             val adapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,cityList)
             dataBinding.autoCompleteTextViewSearch.setAdapter(adapter)
-            dataBinding.model = it.getCity()
+            dataBinding.model = it.city
             dataBinding.executePendingBindings()
             dataBinding.textViewWeatherForecastSearchCityName.text=requestedCityName
 

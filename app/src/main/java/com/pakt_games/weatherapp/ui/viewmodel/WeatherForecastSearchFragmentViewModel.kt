@@ -2,8 +2,10 @@ package com.pakt_games.weatherapp.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.pakt_games.weatherapp.db.WeatherForecastDatabase
+import com.pakt_games.weatherapp.network.response.WeatherForecastResponse
 import com.pakt_games.weatherapp.repository.WeatherForecastSearchRepository
 import com.pakt_games.weatherapp.ui.model.SavedCities
 import com.pakt_games.weatherapp.ui.model.WeatherForecastDetailViewStateModel
@@ -11,33 +13,25 @@ import com.pakt_games.weatherapp.utils.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class WeatherForecastSearchFragmentViewModel(private val weatherForecastDetailRepository: WeatherForecastSearchRepository) : ViewModel() {
+class WeatherForecastSearchFragmentViewModel(private val weatherForecastSearchRepository: WeatherForecastSearchRepository) : ViewModel() {
 
-    val onCityNameFetched = MutableLiveData<WeatherForecastDetailViewStateModel>()
+    var onCityNameFetched = MutableLiveData<WeatherForecastResponse>()
     val onError = MutableLiveData<Unit>()
 
     fun prepareCityName(cityName: String) {
-
         viewModelScope.launch {
-            val remoteResponse = weatherForecastDetailRepository.getCityName(cityName)
-            when(remoteResponse){
-                is Result.Success -> {
-                    onCityNameFetched.value = WeatherForecastDetailViewStateModel(remoteResponse.data!!)
-                }
-                is Result.Error -> onError.value = Unit
-            }
-
+            onCityNameFetched= weatherForecastSearchRepository.getCityName(cityName).asLiveData() as MutableLiveData<WeatherForecastResponse>
         }
     }
     fun insertCityToDB(savedCities: SavedCities) {
         viewModelScope.launch(Dispatchers.IO) {
-            weatherForecastDetailRepository.insertCityAsync(savedCities)
+            weatherForecastSearchRepository.insertCityAsync(savedCities)
         }
     }
     fun deleteTable()
     {
         viewModelScope.launch(Dispatchers.IO) {
-            weatherForecastDetailRepository.deleteTable()
+            weatherForecastSearchRepository.deleteTable()
         }
     }
 }
