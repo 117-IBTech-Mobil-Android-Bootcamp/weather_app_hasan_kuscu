@@ -4,12 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.pakt_games.weatherapp.db.WeatherForecastDatabase
 import com.pakt_games.weatherapp.network.response.WeatherForecastResponse
 import com.pakt_games.weatherapp.repository.WeatherForecastSearchRepository
 import com.pakt_games.weatherapp.ui.model.SavedCities
-import com.pakt_games.weatherapp.ui.model.WeatherForecastDetailViewStateModel
-import com.pakt_games.weatherapp.utils.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

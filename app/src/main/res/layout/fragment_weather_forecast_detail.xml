@@ -13,7 +13,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.WeatherForecastDetailFragment">
+    tools:context=".ui.view.WeatherForecastDetailFragment"
+    android:background="@drawable/morning_background">
 
     <ImageView
         android:id="@+id/textViewWeatherForecastDetailAppLogo"
@@ -35,20 +36,20 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewWeatherForecastDetailCityName"
         app:layout_constraintTop_toTopOf="@+id/textViewWeatherForecastDetailCityName"
-        android:src="@drawable/city_logo" />
+        android:src="@drawable/city_logo"/>
 
     <TextView
         android:id="@+id/textViewWeatherForecastDetailCityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/large_margin"
+        android:text="@{model.name}"
         android:textSize="@dimen/medium_text_size"
         app:layout_constraintEnd_toStartOf="@+id/imageViewWeatherForecastDetailCityGeneralLogo"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewWeatherForecastDetailAppLogo"
-        tools:text="@string/test_text_city_name"
-        android:text="@{model.name}"/>
+        tools:text="@string/test_text_city_name" />
 
     <TextView
         android:id="@+id/textViewWeatherForecastDetailAppText"

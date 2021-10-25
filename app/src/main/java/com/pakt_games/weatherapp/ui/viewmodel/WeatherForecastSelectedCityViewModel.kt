@@ -2,28 +2,22 @@ package com.pakt_games.weatherapp.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.pakt_games.weatherapp.network.response.WeatherForecastResponse
 import com.pakt_games.weatherapp.repository.WeatherForecastSelectedCityRepository
 import com.pakt_games.weatherapp.ui.model.SavedCities
-import com.pakt_games.weatherapp.ui.model.WeatherForecastDetailViewStateModel
-import com.pakt_games.weatherapp.utils.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class WeatherForecastSelectedCityViewModel(private val weatherForecastSelectedCityRepository: WeatherForecastSelectedCityRepository) :ViewModel() {
     var readAllDataDB = MutableLiveData<List<SavedCities>>()
-    val onCityNameFetched = MutableLiveData<WeatherForecastDetailViewStateModel>()
+    var onCityNameFetched = MutableLiveData<WeatherForecastResponse>()
     val onError = MutableLiveData<Unit>()
 
     fun getCityProperties(cityName: String) {
         viewModelScope.launch {
-            val remoteResponse = weatherForecastSelectedCityRepository.getCityPropertiesForUpdateDatabase(cityName)
-            when(remoteResponse){
-                is Result.Success -> {
-                    onCityNameFetched.value = WeatherForecastDetailViewStateModel(remoteResponse.data!!)
-                }
-                is Result.Error -> onError.value = Unit
-            }
+            onCityNameFetched= weatherForecastSelectedCityRepository.getCity(cityName).asLiveData() as MutableLiveData<WeatherForecastResponse>
         }
     }
     fun getCityDataInSQL() {

@@ -7,6 +7,8 @@ import com.pakt_games.weatherapp.base.BaseFragment
 import com.pakt_games.weatherapp.components.CustomRegisteredCitiesPagerAdapter
 import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastSelectedCityBinding
 import com.pakt_games.weatherapp.di.*
+import com.pakt_games.weatherapp.ui.model.CityCurrent
+import com.pakt_games.weatherapp.ui.model.CityLocation
 import com.pakt_games.weatherapp.ui.model.SavedCities
 import com.pakt_games.weatherapp.ui.model.WeatherForecastDetailViewStateModel
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastSelectedCityViewModel
@@ -76,14 +78,14 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             nowTime = now().hour
             showToast(nowTime.toString())
-            if(true)
+            if(false)
             {
                 viewModel.readAllDataDB.observe(viewLifecycleOwner, { cityList->
                     cityList?.let {
                         for (i in 0..it.size-1) {
                             viewModel.getCityProperties(it[i].cityName)
                             viewModel.onCityNameFetched.observe(viewLifecycleOwner,{
-                                updateCityInDatabase(i+1,it)
+                                updateCityInDatabase(i+1,it.cityName,it.city)
                             })
                         }
                     }
@@ -91,16 +93,16 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
             }
         }
     }
-    private fun updateCityInDatabase(cityRoomId: Int,it: WeatherForecastDetailViewStateModel) {
+    private fun updateCityInDatabase(cityRoomId: Int,cityName: CityLocation,cityCurrent: CityCurrent) {
         viewModel.updateDatabaseCityData(
             cityRoomId,
-            it.getCityName(),
-            it.getCity().temp_c.toString(),
-            it.getCity().temp_f.toString(),
-            it.getCity().feelslike_c.toString(),
-            it.getCity().feelslike_f.toString(),
-            it.getCity().condition.text,
-            it.getCity().condition.icon
+            cityName.name,
+            cityCurrent.temp_c.toString(),
+            cityCurrent.temp_f.toString(),
+            cityCurrent.feelslike_c.toString(),
+            cityCurrent.feelslike_f.toString(),
+            cityCurrent.condition.text,
+            cityCurrent.condition.icon
         )
     }
 
