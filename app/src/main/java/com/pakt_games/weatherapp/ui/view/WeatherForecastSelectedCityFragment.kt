@@ -7,6 +7,7 @@ import com.pakt_games.weatherapp.base.BaseFragment
 import com.pakt_games.weatherapp.components.CustomRegisteredCitiesPagerAdapter
 import com.pakt_games.weatherapp.databinding.FragmentWeatherForecastSelectedCityBinding
 import com.pakt_games.weatherapp.di.*
+import com.pakt_games.weatherapp.network.response.WeatherForecastResponse
 import com.pakt_games.weatherapp.ui.model.CityCurrent
 import com.pakt_games.weatherapp.ui.model.CityLocation
 import com.pakt_games.weatherapp.ui.model.SavedCities
@@ -25,6 +26,7 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
 
     private var index: Int = 0
     var list : List<SavedCities> = arrayListOf()
+    var liveCityList: WeatherForecastResponse? =null
 
     override val viewModel: WeatherForecastSelectedCityViewModel by viewModel()
 
@@ -77,16 +79,18 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
         val nowTime: Int
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             nowTime = now().hour
-            showToast(nowTime.toString())
-            if(false)
+            if(nowTime==23)
             {
                 viewModel.readAllDataDB.observe(viewLifecycleOwner, { cityList->
                     cityList?.let {
                         for (i in 0..it.size-1) {
                             viewModel.getCityProperties(it[i].cityName)
                             viewModel.onCityNameFetched.observe(viewLifecycleOwner,{
-                                updateCityInDatabase(i+1,it.cityName,it.city)
+                                liveCityList=it
                             })
+                                liveCityList?.let { liveCityList->
+                                    updateCityInDatabase(i+1,liveCityList.cityName,liveCityList.city)
+                                }
                         }
                     }
                 })
