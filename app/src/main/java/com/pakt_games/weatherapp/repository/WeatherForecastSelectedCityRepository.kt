@@ -8,14 +8,24 @@ import com.pakt_games.weatherapp.utils.API_KEY
 import kotlinx.coroutines.flow.flow
 
 class WeatherForecastSelectedCityRepository(private val api: WeatherForecastAPI, private val weatherForecastDAO: WeatherForecastDAO): IWeatherForecastSelectedCityRepository {
+    /*
+        Getting Data In API
+        I using the flow in the repository layer.
+    */
     override suspend fun getCity(cityName:String)= flow {
         val currentCityResponse = api.getCity(API_KEY,cityName)
         emit(currentCityResponse)
     }
+    /*
+    Get AlL Cities in the DATABASE
+    */
     override suspend fun getAllSavedCitiesData(): List<SavedCities> {
         val readAllSavedCities: List<SavedCities> =weatherForecastDAO.fetchCities()
         return readAllSavedCities
     }
+    /*
+    Updating SavedCity in the DATABASE
+    */
     override suspend fun updateCity(
         id:Int,
         cityName: String,
