@@ -16,7 +16,7 @@ class WeatherForecastDetailViewModel(private val weatherForecastDetailRepository
 
     fun prepareCity(cityName: String) {
         viewModelScope.launch {
-            onCityFetched= weatherForecastDetailRepository.getCityDailyPropertiesFromRemote(cityName).asLiveData() as MutableLiveData<WeatherForecastResponse>
+            onCityFetched=weatherForecastDetailRepository.getCityDailyPropertiesFromRemote(cityName).asLiveData() as MutableLiveData<WeatherForecastResponse>
         }
     }
 

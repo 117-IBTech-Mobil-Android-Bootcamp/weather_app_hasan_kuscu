@@ -7,7 +7,7 @@ import org.junit.Before
 
 import org.junit.Test
 
-class WeatherForecastDetailRepositoryTest {
+internal class WeatherForecastDetailRepositoryTest {
 
     var detailRepositoryTest: FakeWeatherForecastDetailRepository? = null
 
