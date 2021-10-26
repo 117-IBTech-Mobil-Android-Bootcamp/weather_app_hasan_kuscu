@@ -1,5 +1,27 @@
 package com.pakt_games.weatherapp.repository
 
-import junit.framework.TestCase
+import com.google.common.truth.Truth
+import com.pakt_games.weatherapp.fakerepofortest.FakeWeatherForecastDetailRepository
+import kotlinx.coroutines.runBlocking
+import org.junit.Before
 
-class WeatherForecastDetailRepositoryTest : TestCase()
+import org.junit.Test
+
+class WeatherForecastDetailRepositoryTest {
+
+    var detailRepositoryTest: FakeWeatherForecastDetailRepository? = null
+
+    @Before
+    fun setUp() {
+        detailRepositoryTest = FakeWeatherForecastDetailRepository()
+    }
+    @Test
+     fun weatherForecastDetailResponseIsNotNull() {
+        runBlocking {
+            detailRepositoryTest?.let {
+                val detailResponse=detailRepositoryTest!!.getCityDailyPropertiesFromRemote("Bursa")
+                Truth.assertThat(detailResponse).isNotNull()
+            }
+        }
+    }
+}
