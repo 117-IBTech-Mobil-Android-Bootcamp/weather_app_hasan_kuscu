@@ -5,7 +5,9 @@ import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastSearchFragmentViewM
 import com.pakt_games.weatherapp.ui.viewmodel.WeatherForecastSelectedCityViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-
+/*
+    ViewModelModules for Dependecy Injection
+*/
 val weatherForecastDetailViewModelModule = module {
     viewModel { WeatherForecastDetailViewModel(get()) }
 }

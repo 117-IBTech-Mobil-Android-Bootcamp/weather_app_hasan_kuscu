@@ -7,7 +7,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+/*
+    NetworkModules for Dependecy Injection
+*/
 val networkModule = module {
     factory { provideHttpClient() }
     single { provideCityApi(get()) }
@@ -29,6 +31,9 @@ fun provideRetrofit(httpClient: OkHttpClient) : Retrofit {
         .client(httpClient)
         .build()
 }
+/*
+    Weather Forecast API
+*/
 fun provideCityApi(retrofit: Retrofit) : WeatherForecastAPI {
     return  retrofit.create(WeatherForecastAPI::class.java)
 }

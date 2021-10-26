@@ -4,7 +4,9 @@ import com.pakt_games.weatherapp.repository.WeatherForecastDetailRepository
 import com.pakt_games.weatherapp.repository.WeatherForecastSearchRepository
 import com.pakt_games.weatherapp.repository.WeatherForecastSelectedCityRepository
 import org.koin.dsl.module
-
+/*
+    RepositoryModules for Dependecy Injection
+*/
 val weatherForecastDetailRepositoryModule = module {
     factory { WeatherForecastDetailRepository(get()) }
 }
