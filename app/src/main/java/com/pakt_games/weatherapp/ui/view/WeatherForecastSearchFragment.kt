@@ -21,11 +21,16 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
 
     var requestedCityName: String? = null
     private var cityId:Int = 0
-
+    /*
+            ViewModel injecting
+     */
     override val viewModel: WeatherForecastSearchFragmentViewModel by viewModel()
 
     override fun getLayoutID() = R.layout.fragment_weather_forecast_search
 
+    /*
+        Click funtions called
+    */
     override fun observeLiveData() {
 
        dataBinding.imageViewSearchButton.setOnClickListener {
@@ -47,6 +52,9 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
         }
     }
 
+    /*
+        Inserting City To Database
+    */
     private fun insertCityToDatabase(cityId: Int) {
         val cityName :String = dataBinding.textViewWeatherForecastSearchCityName.text.toString()
         val temp_c : String = dataBinding.textViewWeatherForecastSearchTemplatureCNumber.text.toString()
@@ -68,14 +76,18 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
         viewModel.insertCityToDB(model)
 
     }
-
+    /*
+        calling city name in the api
+    */
     private fun getCityNameData() {
         requestedCityName = dataBinding.autoCompleteTextViewSearch.text.toString()
         if(requestedCityName!="")
             viewModel.prepareCityName(requestedCityName!!)
     }
 
-
+    /*
+            Working  AutoTextComplateTextView Use-cases
+    */
     private fun autoTextViewIsWork() {
         viewModel.onCityNameFetched.observe(this, {
             val cityList= arrayListOf<Any>(it.cityName.name)
@@ -96,6 +108,9 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
         cityId= sharedPreferences.getInt("citySearchLiveId",0)+1
         injectKoin()
     }
+    /*
+        Koin injecting for dependency Injection
+    */
     fun injectKoin() {
         startKoin {
             androidContext(requireActivity())
@@ -107,6 +122,9 @@ class WeatherForecastSearchFragment : BaseFragment<WeatherForecastSearchFragment
             )
         }
     }
+    /*
+        Saving Cities
+    */
     fun getSavedCities() {
         val action=WeatherForecastSearchFragmentDirections.actionWeatherForecastSearchFragmentToWeatherForecastSelectedCityFragment()
         findNavController().navigate(action)

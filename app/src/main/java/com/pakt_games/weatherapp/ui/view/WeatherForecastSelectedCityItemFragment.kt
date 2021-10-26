@@ -29,6 +29,9 @@ class WeatherForecastSelectedCityItemFragment : Fragment() {
     private var cityAirIcon=""
     protected lateinit var dataBinding: ViewDataBinding
 
+        /*
+            Creating instance for SevadCities
+        */
     companion object {
         fun newInstance(i: Int,list: List<SavedCities>): WeatherForecastSelectedCityItemFragment {
             val fragment = WeatherForecastSelectedCityItemFragment()
@@ -44,6 +47,9 @@ class WeatherForecastSelectedCityItemFragment : Fragment() {
             return fragment
         }
     }
+        /*
+           Fiil in Data
+        */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         cityAirStatuText = arguments?.getString("cityAirStatuText").toString()
@@ -59,7 +65,9 @@ class WeatherForecastSelectedCityItemFragment : Fragment() {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_weather_forecast_selected_city_item, container, false)
         return dataBinding.root
     }
-
+            /*
+                Conneted data and view
+            */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.textViewCityName.text = cityName
@@ -69,7 +77,9 @@ class WeatherForecastSelectedCityItemFragment : Fragment() {
         view.textViewWeatherForecastSelectedCityFeelslikeFahrenaytValue.text = cityFellslikeFahrenaytValue
         view.textViewCityAirStatuText.text = cityAirStatuText
         view.imageViewAirStatuIcon.downloadImage(cityAirIcon, createPlaceholder(view.context))
-
+                /*
+            Got to Detail PAGE
+        */
         view.buttonGoToCityDetailPage.setOnClickListener {
             val action=WeatherForecastSelectedCityFragmentDirections.actionWeatherForecastSelectedCityFragmentToWeatherForecastDetailFragment(view.textViewCityName.text.toString())
             findNavController().navigate(action)

@@ -22,14 +22,19 @@ class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewMode
     override val viewModel: WeatherForecastDetailViewModel by viewModel()
 
     override fun getLayoutID() = R.layout.fragment_weather_forecast_detail
-
+    /*
+            Starting Koin
+     */
     override fun actionEvents() {
         startKoin {
             androidContext(requireActivity())
             modules(networkModule, weatherForecastDetailRepositoryModule, weatherForecastDetailViewModelModule)
         }
     }
-    fun getSingleMovieData()
+    /*
+        Getting page arguments data using with Navigation Arguments
+    */
+    fun getSingleCityArgData()
     {
         arguments?.let {
             requestedCityName = WeatherForecastDetailFragmentArgs.fromBundle(it).cityName
@@ -38,7 +43,7 @@ class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewMode
 
     }
     override fun observeLiveData() {
-        getSingleMovieData()
+        getSingleCityArgData()
         viewModel.onCityFetched.observe(this, {
             dataBinding.model=it.cityName
             dataBinding.recyclerviewWeatherForecastDetail.adapter = WeatherForecastDetailRecyclerAdapter(it.cityDaily.forecastday[0].cityHours)
@@ -48,6 +53,9 @@ class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewMode
             goToSelectedPage()
         }
     }
+    /*
+        Go to Selected Page
+    */
     fun goToSelectedPage() {
         val action = WeatherForecastDetailFragmentDirections.actionWeatherForecastDetailFragmentToWeatherForecastSelectedCityFragment()
         findNavController().navigate(action)

@@ -36,7 +36,6 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
         val adapter = CustomRegisteredCitiesPagerAdapter(childFragmentManager)
         pagerCities.adapter = adapter
         checkCityInSQLData(adapter)
-
         dataBinding.imageViewBackToSearchPage.setOnClickListener {
             goToSearchPage()
         }
@@ -46,6 +45,9 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
         injectKoin()
         updateAllRoomDatabase()
     }
+        /*
+           checking City in the Database
+        */
     private fun checkCityInSQLData(adapter: CustomRegisteredCitiesPagerAdapter) {
         viewModel.readAllDataDB.observe(viewLifecycleOwner, { cityList->
             cityList?.let {
@@ -58,6 +60,9 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
             }
         })
     }
+    /*
+          Injection Koin for dependency injection
+    */
     fun injectKoin() {
         startKoin {
             androidContext(requireActivity())
@@ -69,11 +74,20 @@ class WeatherForecastSelectedCityFragment : BaseFragment<WeatherForecastSelected
             )
         }
     }
+    /*
+        Go to Search Page
+    */
     fun goToSearchPage() {
         val action=WeatherForecastSelectedCityFragmentDirections.actionWeatherForecastSelectedCityFragmentToWeatherForecastSearchFragment()
         findNavController().navigate(action)
         stopKoin()
     }
+        /*
+            1- Getting database data in the Room database
+            2- Responding city name to api
+            3- Calling api
+            4- Updating city in the Room database
+        */
     fun updateAllRoomDatabase() {
         val nowTime: Int
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
