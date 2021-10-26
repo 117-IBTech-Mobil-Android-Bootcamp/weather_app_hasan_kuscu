@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModel
 import com.pakt_games.weatherapp.components.ConnectionLiveData
 import com.pakt_games.weatherapp.utils.showToast
 
-abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding> : Fragment(), FragmentActions {
+abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding> : Fragment() {
 
     abstract val viewModel: VM
     protected lateinit var dataBinding: DB
@@ -40,7 +40,4 @@ abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding> : Fragment(), 
     abstract fun getLayoutID(): Int
     abstract fun observeLiveData()
     abstract fun actionEvents()
-    override fun shouldCheckInternetConnection() {
-
-    }
 }

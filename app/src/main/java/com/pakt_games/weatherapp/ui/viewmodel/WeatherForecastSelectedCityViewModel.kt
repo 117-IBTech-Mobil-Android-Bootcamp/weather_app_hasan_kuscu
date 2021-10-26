@@ -4,13 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.pakt_games.weatherapp.base.BaseViewModel
 import com.pakt_games.weatherapp.network.response.WeatherForecastResponse
 import com.pakt_games.weatherapp.repository.WeatherForecastSelectedCityRepository
 import com.pakt_games.weatherapp.ui.model.SavedCities
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class WeatherForecastSelectedCityViewModel(private val weatherForecastSelectedCityRepository: WeatherForecastSelectedCityRepository) :ViewModel() {
+class WeatherForecastSelectedCityViewModel(private val weatherForecastSelectedCityRepository: WeatherForecastSelectedCityRepository) : BaseViewModel() {
     var readAllDataDB = MutableLiveData<List<SavedCities>>()
     var onCityNameFetched = MutableLiveData<WeatherForecastResponse>()
     val onError = MutableLiveData<Unit>()

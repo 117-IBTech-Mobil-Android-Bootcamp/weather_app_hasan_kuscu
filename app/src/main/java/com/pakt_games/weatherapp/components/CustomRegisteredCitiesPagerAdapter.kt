@@ -7,14 +7,17 @@ import androidx.fragment.app.FragmentPagerAdapter
 class CustomRegisteredCitiesPagerAdapter(manager: FragmentManager): FragmentPagerAdapter(manager) {
 
     private val fragments = ArrayList<Fragment>()
-    private val titles = ArrayList<String>()
-
+    /*
+        My Fragmnets items position
+    */
     override fun getItem(position: Int) : Fragment = fragments[position]
-
-    override fun getPageTitle(position: Int): CharSequence =titles[position]
-
+    /*
+        My Fragmnets count
+    */
     override fun getCount(): Int = fragments.size
-
+    /*
+       Creating my Fragments
+    */
     fun addFragment(fragment: Fragment) {
         fragments.add(fragment)
         notifyDataSetChanged()

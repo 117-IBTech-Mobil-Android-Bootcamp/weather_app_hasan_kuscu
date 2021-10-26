@@ -21,7 +21,6 @@ class WeatherForecastDetailFragment : BaseFragment<WeatherForecastDetailViewMode
 
     override val viewModel: WeatherForecastDetailViewModel by viewModel()
 
-
     override fun getLayoutID() = R.layout.fragment_weather_forecast_detail
 
     override fun actionEvents() {
