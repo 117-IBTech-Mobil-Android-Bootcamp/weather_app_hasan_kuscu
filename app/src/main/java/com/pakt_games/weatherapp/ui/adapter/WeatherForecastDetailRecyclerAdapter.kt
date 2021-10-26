@@ -20,15 +20,9 @@ class WeatherForecastDetailRecyclerAdapter(private val cityHourList: List<CityHo
         val city = this.cityHourList[position]
         holder.populate(city)
     }
-
+    /*
+        City Hour List Item Count
+    */
     override fun getItemCount() = this.cityHourList.size
 }
 
-class WeatherForecastDetailViewHolder(private val binding: WeatherForecastDetailRecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    fun populate(city: CityHours) {
-        binding.model = city
-        binding.executePendingBindings()
-    }
-
-}
