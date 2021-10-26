@@ -25,5 +25,4 @@ class WeatherForecastSelectedCityRepository(private val api: WeatherForecastAPI,
         feelslike_f: String,
         cityAirStatuText: String,
         cityAirStatuIcon: String) = weatherForecastDAO.updateSavedCity(id,cityName, temp_c, temp_f, feelslike_c, feelslike_f, cityAirStatuText, cityAirStatuIcon)
-
 }
