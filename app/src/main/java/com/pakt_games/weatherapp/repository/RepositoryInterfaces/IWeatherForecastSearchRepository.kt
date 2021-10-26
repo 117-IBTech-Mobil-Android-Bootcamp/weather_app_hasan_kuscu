@@ -8,6 +8,4 @@ interface IWeatherForecastSearchRepository {
     suspend fun getCityName(cityName:String): kotlinx.coroutines.flow.Flow<WeatherForecastResponse?>
 
     suspend fun insertCityAsync(savedCities: SavedCities)
-
-    suspend fun deleteTable()
 }

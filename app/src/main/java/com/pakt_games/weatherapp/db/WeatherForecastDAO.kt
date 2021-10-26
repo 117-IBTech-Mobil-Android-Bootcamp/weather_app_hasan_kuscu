@@ -18,6 +18,4 @@ interface WeatherForecastDAO {
     @Query("SELECT * FROM SAVEDCITIES ")
     suspend fun  fetchCities() : List<SavedCities>
 
-    @Query("DELETE FROM SAVEDCITIES")
-    suspend fun delete()
 }

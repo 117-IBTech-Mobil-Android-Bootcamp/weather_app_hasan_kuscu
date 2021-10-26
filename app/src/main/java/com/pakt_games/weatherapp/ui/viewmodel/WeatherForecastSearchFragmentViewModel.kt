@@ -25,10 +25,4 @@ class WeatherForecastSearchFragmentViewModel(private val weatherForecastSearchRe
             weatherForecastSearchRepository.insertCityAsync(savedCities)
         }
     }
-    fun deleteTable()
-    {
-        viewModelScope.launch(Dispatchers.IO) {
-            weatherForecastSearchRepository.deleteTable()
-        }
-    }
 }
