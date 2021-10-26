@@ -15,7 +15,9 @@ class WeatherForecastDetailViewModel(private val weatherForecastDetailRepository
 
     var onCityFetched = MutableLiveData<WeatherForecastResponse>()
     val onError = MutableLiveData<Unit>()
-
+            /*
+                Apı Response
+            */
     fun prepareCity(cityName: String) {
         viewModelScope.launch {
             onCityFetched=weatherForecastDetailRepository.getCityDailyPropertiesFromRemote(cityName).asLiveData() as MutableLiveData<WeatherForecastResponse>

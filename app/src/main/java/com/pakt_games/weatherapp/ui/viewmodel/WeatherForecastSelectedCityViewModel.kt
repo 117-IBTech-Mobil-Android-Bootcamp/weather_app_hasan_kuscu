@@ -15,17 +15,25 @@ class WeatherForecastSelectedCityViewModel(private val weatherForecastSelectedCi
     var readAllDataDB = MutableLiveData<List<SavedCities>>()
     var onCityNameFetched = MutableLiveData<WeatherForecastResponse>()
     val onError = MutableLiveData<Unit>()
-
+            /*
+                Api Response
+            */
     fun getCityProperties(cityName: String) {
         viewModelScope.launch {
             onCityNameFetched= weatherForecastSelectedCityRepository.getCity(cityName).asLiveData() as MutableLiveData<WeatherForecastResponse>
         }
     }
+        /*
+            get city in Database
+        */
     fun getCityDataInSQL() {
         viewModelScope.launch {
             readAllDataDB.value = weatherForecastSelectedCityRepository.getAllSavedCitiesData()
         }
     }
+    /*
+            Update City in Database
+        */
     fun updateDatabaseCityData(id:Int,cityName: String, temp_c: String, temp_f: String, feelslike_c: String, feelslike_f: String, cityAirStatuText: String,
                                cityAirStatuIcon: String) {
         viewModelScope.launch(Dispatchers.IO) {

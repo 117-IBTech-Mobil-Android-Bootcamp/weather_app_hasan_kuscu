@@ -15,12 +15,17 @@ class WeatherForecastSearchFragmentViewModel(private val weatherForecastSearchRe
 
     var onCityNameFetched = MutableLiveData<WeatherForecastResponse>()
     val onError = MutableLiveData<Unit>()
-
+            /*
+                API RESPONSE
+            */
     fun prepareCityName(cityName: String) {
         viewModelScope.launch {
             onCityNameFetched= weatherForecastSearchRepository.getCityName(cityName).asLiveData() as MutableLiveData<WeatherForecastResponse>
         }
     }
+        /*
+            İnserting City
+        */
     fun insertCityToDB(savedCities: SavedCities) {
         viewModelScope.launch(Dispatchers.IO) {
             weatherForecastSearchRepository.insertCityAsync(savedCities)
